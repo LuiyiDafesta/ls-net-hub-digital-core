@@ -1,4 +1,6 @@
+import { useTheme } from "next-themes";
 import logoHub from "@/assets/logo-hub.png";
+import logoLight from "@/assets/logo-light.png";
 
 interface LogoProps {
   className?: string;
@@ -7,10 +9,14 @@ interface LogoProps {
 }
 
 const Logo = ({ className = "", showSlogan = false, showUnderline = false }: LogoProps) => {
+  const { resolvedTheme } = useTheme();
+  
+  const logoSrc = resolvedTheme === "light" ? logoLight : logoHub;
+
   return (
     <div className={`flex flex-col items-start ${className}`}>
       <img 
-        src={logoHub} 
+        src={logoSrc} 
         alt="LS NET HUB" 
         className="h-8 md:h-10 w-auto"
       />
