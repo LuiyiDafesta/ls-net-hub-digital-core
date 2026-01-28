@@ -1,72 +1,60 @@
 import Logo from "./Logo";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer id="contact" className="py-16 border-t border-border bg-card/30">
+    <footer className="py-12 border-t border-border bg-card/20">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Brand Column */}
-          <div className="md:col-span-2">
-            <Logo showSlogan />
-            <p className="text-muted-foreground mt-6 max-w-sm leading-relaxed">
-              Transforming businesses through innovative technology solutions. 
-              Your trusted partner in the digital age.
-            </p>
-          </div>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          {/* Logo */}
+          <Logo />
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-foreground font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-3">
-              {["Services", "About Us", "Careers", "Blog"].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-secondary transition-colors duration-300 text-sm"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-foreground font-semibold mb-4">Contact</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-muted-foreground text-sm">
-                <Mail className="w-4 h-4 text-secondary" />
-                info@lsnethub.com
-              </li>
-              <li className="flex items-center gap-3 text-muted-foreground text-sm">
-                <Phone className="w-4 h-4 text-secondary" />
-                +1 (555) 123-4567
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground text-sm">
-                <MapPin className="w-4 h-4 text-secondary mt-0.5" />
-                <span>Global Operations</span>
-              </li>
-            </ul>
+          {/* Links */}
+          <div className="flex items-center gap-8">
+            <a
+              href="/privacy"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
+            >
+              Terms of Service
+            </a>
+            <a
+              href="#contact"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
+            >
+              Contact
+            </a>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm">
+        {/* Divider */}
+        <div className="my-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+        {/* Bottom Row */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+          <p>
             © {new Date().getFullYear()} LS NET HUB. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
-            {["Privacy Policy", "Terms of Service"].map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
-              >
-                {link}
-              </a>
-            ))}
+          
+          {/* Local IT Support Note */}
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted/30 border border-border/50">
+            <span className="text-muted-foreground">
+              🇦🇷 Local IT support in Argentina?
+            </span>
+            <a
+              href="https://lsnetinformatica.com.ar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary hover:text-secondary/80 transition-colors font-medium inline-flex items-center gap-1"
+            >
+              lsnetinformatica.com.ar
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </div>
       </div>

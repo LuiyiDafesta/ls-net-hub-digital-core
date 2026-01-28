@@ -1,73 +1,68 @@
-import { ArrowRight, Sparkles } from "lucide-react";
-import { Button } from "./ui/button";
+import { ChevronDown } from "lucide-react";
+import { Suspense, lazy } from "react";
+
+const NexusScene = lazy(() => import("./NexusScene"));
 
 const HeroSection = () => {
+  const scrollToContent = () => {
+    const element = document.getElementById("pillars");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 grid-background opacity-30" />
+      <div className="absolute inset-0 grid-background opacity-20" />
       <div className="absolute inset-0 radial-glow" />
       
       {/* Floating Orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] animate-pulse-glow" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-[100px] animate-pulse-glow animation-delay-200" />
+      <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-success/10 rounded-full blur-[100px] animate-pulse-glow animation-delay-400" />
+
+      {/* 3D Scene */}
+      <Suspense fallback={null}>
+        <NexusScene />
+      </Suspense>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm mb-8 animate-fade-in-up opacity-0">
-            <Sparkles className="w-4 h-4 text-secondary" />
-            <span className="text-sm text-muted-foreground">
-              Transforming businesses with cutting-edge technology
-            </span>
-          </div>
-
+        <div className="max-w-5xl mx-auto text-center">
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up opacity-0 animation-delay-200">
-            <span className="text-foreground">Empowering your</span>
-            <br />
-            <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">
-                digital future
-              </span>
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-secondary via-primary to-success rounded-full shadow-[0_0_20px_hsla(211,100%,50%,0.5)]" />
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 animate-fade-in-up opacity-0">
+            <span className="text-foreground">The Nexus of </span>
+            <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">
+              AI
             </span>
+            <span className="text-foreground">, </span>
+            <span className="bg-gradient-to-r from-primary via-warning to-secondary bg-clip-text text-transparent">
+              Infrastructure
+            </span>
+            <span className="text-foreground">,</span>
+            <br className="hidden md:block" />
+            <span className="text-foreground"> and </span>
+            <span className="bg-gradient-to-r from-success via-secondary to-primary bg-clip-text text-transparent">
+              Tech Education
+            </span>
+            <span className="text-foreground">.</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up opacity-0 animation-delay-400">
-            From local expertise to global impact. We are your strategic partner in 
-            <span className="text-secondary"> AI</span>,
-            <span className="text-primary"> Cloud Infrastructure</span>, and
-            <span className="text-success"> Tech Education</span>.
+          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-16 leading-relaxed animate-fade-in-up opacity-0 animation-delay-200">
+            LS NET HUB is your ecosystem for navigating the future of technology. 
+            From intelligent automation to robust cloud solutions and cutting-edge learning.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up opacity-0 animation-delay-600">
-            <Button variant="hero" size="xl">
-              Explore Our Services
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-            <Button variant="outline" size="xl">
-              Learn More
-            </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-border/50 animate-fade-in-up opacity-0 animation-delay-600">
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">10+</div>
-              <div className="text-sm text-muted-foreground">Years of Experience</div>
+          {/* Scroll Indicator */}
+          <button
+            onClick={scrollToContent}
+            className="animate-fade-in-up opacity-0 animation-delay-400 group cursor-pointer"
+            aria-label="Scroll to content"
+          >
+            <div className="flex flex-col items-center gap-2 text-muted-foreground hover:text-secondary transition-colors duration-300">
+              <span className="text-sm font-medium tracking-wide uppercase">Explore</span>
+              <ChevronDown className="w-6 h-6 animate-bounce" />
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">500+</div>
-              <div className="text-sm text-muted-foreground">Projects Delivered</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">Global</div>
-              <div className="text-sm text-muted-foreground">Reach & Impact</div>
-            </div>
-          </div>
+          </button>
         </div>
       </div>
 
