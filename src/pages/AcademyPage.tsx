@@ -184,7 +184,7 @@ const AcademyPage = () => {
                 </Button>
               </a>
               <a 
-                href="https://lsnetinformatica.com.ar" 
+                href="https://lsnetinformatica.com.ar/courses/" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
