@@ -24,10 +24,10 @@ const Footer = () => {
               Terms of Service
             </a>
             <a
-              href="#contact"
+              href="/contact"
               className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
             >
-              Contact
+              Contacto
             </a>
           </div>
         </div>

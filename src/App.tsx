@@ -9,6 +9,7 @@ import CloudPage from "./pages/CloudPage";
 import AcademyPage from "./pages/AcademyPage";
 import MediaPage from "./pages/MediaPage";
 import AuraPage from "./pages/AuraPage";
+import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/academy" element={<AcademyPage />} />
           <Route path="/media" element={<MediaPage />} />
           <Route path="/aura" element={<AuraPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
