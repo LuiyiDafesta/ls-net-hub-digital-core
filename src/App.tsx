@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import IAPage from "./pages/IAPage";
 import CloudPage from "./pages/CloudPage";
 import AcademyPage from "./pages/AcademyPage";
+import MediaPage from "./pages/MediaPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/ia" element={<IAPage />} />
           <Route path="/cloud" element={<CloudPage />} />
           <Route path="/academy" element={<AcademyPage />} />
+          <Route path="/media" element={<MediaPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
