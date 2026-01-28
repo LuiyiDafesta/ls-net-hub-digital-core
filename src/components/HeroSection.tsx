@@ -7,7 +7,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 grid-background opacity-30" />
       <div className="absolute inset-0 radial-glow" />
@@ -20,19 +20,19 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up opacity-0">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-10 animate-fade-in-up opacity-0">
             <span className="text-foreground">The Nexus of</span>
             <br />
-            <span className="relative inline-block">
+            <span className="relative inline-block mt-2">
               <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">
                 AI, Infrastructure & Tech Education
               </span>
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-secondary via-primary to-success rounded-full shadow-[0_0_20px_hsla(211,100%,50%,0.5)]" />
+              <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-secondary via-primary to-success rounded-full shadow-[0_0_20px_hsla(211,100%,50%,0.5)]" />
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-16 leading-relaxed animate-fade-in-up opacity-0 animation-delay-200">
+          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in-up opacity-0 animation-delay-200">
             LS NET HUB is your ecosystem for navigating the future of technology. 
             From intelligent automation to robust cloud solutions and cutting-edge learning.
           </p>
@@ -52,7 +52,7 @@ const HeroSection = () => {
       </div>
 
       {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };
