@@ -7,7 +7,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center pt-24 pb-16 overflow-hidden">
+    <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-16 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 grid-background opacity-30" />
       <div className="absolute inset-0 radial-glow" />
