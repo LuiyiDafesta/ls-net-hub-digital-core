@@ -55,7 +55,7 @@ const ThreePillars = () => {
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <span className="text-sm font-semibold text-secondary uppercase tracking-widest">
             Our Divisions
           </span>
