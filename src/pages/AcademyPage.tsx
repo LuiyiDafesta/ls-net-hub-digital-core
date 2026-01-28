@@ -173,17 +173,23 @@ const AcademyPage = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up opacity-0 animation-delay-600">
-              <Button variant="hero" size="xl">
-                Browse Courses
-                <ArrowRight className="w-5 h-5" />
-              </Button>
               <a 
-                href="https://youtube.com/@lsnetinformatica" 
+                href="https://lsnetinformatica.com.ar/courses/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <Button variant="hero" size="xl">
+                  Browse Courses
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </a>
+              <a 
+                href="https://lsnetinformatica.com.ar" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
                 <Button variant="outline" size="xl">
-                  <Youtube className="w-5 h-5" />
+                  <BookOpen className="w-5 h-5" />
                   Free Tutorials
                 </Button>
               </a>
