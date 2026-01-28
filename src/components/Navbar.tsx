@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X, Sparkles } from "lucide-react";
 import Logo from "./Logo";
 import { Button } from "./ui/button";
 
@@ -7,9 +8,10 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Services", href: "#services" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "IA", href: "/ia" },
+    { label: "Cloud", href: "/cloud" },
+    { label: "Academy", href: "/academy" },
+    { label: "Media", href: "/media" },
   ];
 
   return (
@@ -20,19 +22,31 @@ const Navbar = () => {
           <Logo />
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <Button variant="hero" size="sm">
-              Get Started
-            </Button>
+            
+            {/* AURA Button - Highlighted */}
+            <Link to="/aura">
+              <Button variant="outline" size="sm" className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 gap-2">
+                <Sparkles className="w-4 h-4 text-secondary" />
+                Probá AURA
+              </Button>
+            </Link>
+            
+            {/* Get Started - External Link */}
+            <a href="https://lsnetinformatica.com.ar" target="_blank" rel="noopener noreferrer">
+              <Button variant="hero" size="sm">
+                Get Started
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -50,18 +64,30 @@ const Navbar = () => {
           <div className="md:hidden py-4 border-t border-border/50 animate-fade-in-up">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <Button variant="hero" size="sm" className="w-fit mt-2">
-                Get Started
-              </Button>
+              
+              <div className="flex flex-col gap-3 mt-2">
+                <Link to="/aura" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="outline" size="sm" className="w-fit border-secondary/50 gap-2">
+                    <Sparkles className="w-4 h-4 text-secondary" />
+                    Probá AURA
+                  </Button>
+                </Link>
+                
+                <a href="https://lsnetinformatica.com.ar" target="_blank" rel="noopener noreferrer">
+                  <Button variant="hero" size="sm" className="w-fit">
+                    Get Started
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         )}
