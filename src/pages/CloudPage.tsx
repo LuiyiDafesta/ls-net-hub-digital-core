@@ -7,9 +7,7 @@ const hostingPlans = [
   {
     name: "Hosting Básico",
     description: "Ideal para emprendedores y pequeños negocios",
-    price: "70.000",
-    currency: "ARS",
-    period: "/año",
+    priceARS: 70000,
     popular: false,
     features: [
       "Casillas de email ilimitadas",
@@ -22,9 +20,7 @@ const hostingPlans = [
   {
     name: "Hosting + WordPress",
     description: "Nuestro producto estrella, listo para usar",
-    price: "90.000",
-    currency: "ARS",
-    period: "/año",
+    priceARS: 90000,
     popular: true,
     features: [
       "WordPress preinstalado",
@@ -38,9 +34,7 @@ const hostingPlans = [
   {
     name: "Premium Full",
     description: "Todo incluido para desarrolladores profesionales",
-    price: "200.000",
-    currency: "ARS",
-    period: "/año",
+    priceARS: 200000,
     popular: false,
     features: [
       "WordPress + Bricks Builder",
@@ -58,21 +52,29 @@ const additionalServices = [
     icon: Lock,
     title: "Certificados SSL",
     description: "Distintos niveles de certificados según tus necesidades de seguridad.",
-    price: "Desde ARS 20.000",
+    priceARS: 20000,
   },
   {
     icon: Globe,
     title: "Dominios",
     description: "Amplia gama de extensiones disponibles. Registro y renovación anual.",
-    price: "Desde ARS 25.000/año",
+    priceARS: 25000,
   },
   {
     icon: Server,
     title: "VPS",
     description: "Servidores privados virtuales con configuración personalizada según tu proyecto.",
-    price: "Desde ARS 100.000/año",
+    priceARS: 100000,
   },
 ];
+
+const formatPrice = (ars: number) => {
+  const usd = Math.round(ars / 1500);
+  return {
+    ars: ars.toLocaleString("es-AR"),
+    usd: usd,
+  };
+};
 
 const guarantees = [
   {
@@ -185,10 +187,18 @@ const CloudPage = () => {
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
                   <p className="text-sm text-muted-foreground mb-4">{plan.description}</p>
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-sm text-muted-foreground">{plan.currency}</span>
-                    <span className="text-4xl md:text-5xl font-bold text-foreground">{plan.price}</span>
-                    <span className="text-muted-foreground">{plan.period}</span>
+                  
+                  {/* USD Price - Primary */}
+                  <div className="flex items-baseline justify-center gap-1 mb-2">
+                    <span className="text-4xl md:text-5xl font-bold text-foreground">
+                      ${formatPrice(plan.priceARS).usd}
+                    </span>
+                    <span className="text-muted-foreground">USD/año</span>
+                  </div>
+                  
+                  {/* ARS Price - Secondary */}
+                  <div className="text-sm text-muted-foreground">
+                    ARS {formatPrice(plan.priceARS).ars}/año
                   </div>
                 </div>
                 
@@ -250,7 +260,12 @@ const CloudPage = () => {
                 <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                   {service.description}
                 </p>
-                <div className="text-lg font-semibold text-secondary">{service.price}</div>
+                <div className="text-lg font-semibold text-secondary">
+                  Desde ${formatPrice(service.priceARS).usd} USD
+                  <span className="block text-sm font-normal text-muted-foreground">
+                    ARS {formatPrice(service.priceARS).ars}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
