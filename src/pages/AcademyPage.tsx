@@ -42,30 +42,38 @@ const courses = [
   },
 ];
 
-const youtubeVideos = [
+const freeCourses = [
   {
-    title: "n8n Tutorial: Automate Your Email Marketing",
-    views: "15K views",
-    date: "2 weeks ago",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+    title: "Automatiza Google Analytics",
+    description: "Crea flujos automatizados que se conectan a tu Analytics y generan reportes automáticos.",
+    lessons: "1 Lección",
+    instructor: "Luis",
+    thumbnail: "https://lsnetinformatica.com.ar/wp-content/uploads/2025/09/google-analytics-1-300x158.png",
+    url: "https://lsnetinformatica.com.ar/courses/automatiza-google-analytics/",
   },
   {
-    title: "ChatGPT for Business: 10 Use Cases",
-    views: "32K views",
-    date: "1 month ago",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+    title: "El nodo Webhook",
+    description: "Aprende a utilizar el nodo Webhook de N8N para conectar aplicaciones diferentes.",
+    lessons: "1 Lección",
+    instructor: "Luis",
+    thumbnail: "https://lsnetinformatica.com.ar/wp-content/uploads/2025/09/n8n-300x300.jpg",
+    url: "https://lsnetinformatica.com.ar/courses/el-nodo-webhook/",
   },
   {
-    title: "Best Tech Gadgets 2024 Review",
-    views: "8K views",
-    date: "3 weeks ago",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+    title: "Instalar WordPress con Easy Panel",
+    description: "Aprende a instalar WordPress en tu VPS usando Easy Panel en esta guía detallada.",
+    lessons: "1 Lección",
+    instructor: "Luis",
+    thumbnail: "https://lsnetinformatica.com.ar/wp-content/uploads/2025/09/1280x720-cursos-destacadapng-1024x576-1-300x169.png",
+    url: "https://lsnetinformatica.com.ar/courses/instalar-wordpress-con-easy-panel/",
   },
   {
-    title: "Build a CRM Dashboard in 30 Minutes",
-    views: "12K views",
-    date: "1 month ago",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+    title: "Nodo Supabase",
+    description: "Mejora la persistencia de datos en N8N usando el nodo de Supabase.",
+    lessons: "1 Lección",
+    instructor: "Luis",
+    thumbnail: "https://lsnetinformatica.com.ar/wp-content/uploads/2025/09/n8n-300x300.jpg",
+    url: "https://lsnetinformatica.com.ar/courses/nodo-supabse/",
   },
 ];
 
@@ -285,70 +293,92 @@ const AcademyPage = () => {
         </div>
       </section>
 
-      {/* YouTube Hub */}
+      {/* Free Courses Hub */}
       <section className="py-24 bg-card/30 border-y border-border">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 gap-6">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-[#FF0000]/10 flex items-center justify-center">
-                  <Youtube className="w-6 h-6 text-[#FF0000]" />
+                <div className="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center">
+                  <BookOpen className="w-6 h-6 text-success" />
                 </div>
-                <span className="text-sm font-semibold text-[#FF0000] uppercase tracking-widest">
-                  YouTube Hub
+                <span className="text-sm font-semibold text-success uppercase tracking-widest">
+                  Cursos Gratuitos
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                Latest Free Tutorials & Tech Reviews
+                Aprende Gratis con Nuestros Tutoriales
               </h2>
               <p className="text-muted-foreground">
-                Check out our channel for weekly tech insights on tools, gadgets, and software.
+                Accede a cursos gratuitos sobre automatización, n8n, WordPress y más.
               </p>
             </div>
             <a 
-              href="https://youtube.com/@lsnetinformatica" 
+              href="https://lsnetinformatica.com.ar/courses/" 
               target="_blank" 
               rel="noopener noreferrer"
             >
               <Button variant="outline" className="flex-shrink-0">
-                <Youtube className="w-4 h-4 text-[#FF0000]" />
-                Subscribe
+                <ArrowRight className="w-4 h-4" />
+                Ver Todos los Cursos
               </Button>
             </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {youtubeVideos.map((video, index) => (
+            {freeCourses.map((course, index) => (
               <a
                 key={index}
-                href="https://youtube.com/@lsnetinformatica"
+                href={course.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-xl overflow-hidden bg-card border border-border hover:border-muted transition-all duration-300"
+                className="group rounded-xl overflow-hidden bg-card border border-border hover:border-success/50 transition-all duration-300"
               >
                 {/* Thumbnail */}
                 <div className="relative aspect-video bg-muted overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-primary/20 to-success/20 flex items-center justify-center">
-                    <Play className="w-12 h-12 text-foreground/50 group-hover:text-foreground group-hover:scale-110 transition-all duration-300" />
+                  <img 
+                    src={course.thumbnail} 
+                    alt={course.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-2 left-2 px-2 py-1 bg-success text-success-foreground rounded text-xs font-medium">
+                    Gratis
                   </div>
                   <div className="absolute bottom-2 right-2 px-2 py-1 bg-background/80 rounded text-xs text-foreground">
-                    10:32
+                    {course.lessons}
                   </div>
                 </div>
                 
-                {/* Video Info */}
+                {/* Course Info */}
                 <div className="p-4">
-                  <h3 className="font-medium text-foreground text-sm mb-2 line-clamp-2 group-hover:text-secondary transition-colors">
-                    {video.title}
+                  <h3 className="font-medium text-foreground text-sm mb-2 line-clamp-2 group-hover:text-success transition-colors">
+                    {course.title}
                   </h3>
+                  <p className="text-xs text-muted-foreground line-clamp-2 mb-3">
+                    {course.description}
+                  </p>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span>{video.views}</span>
-                    <span>•</span>
-                    <span>{video.date}</span>
+                    <span>Por {course.instructor}</span>
                   </div>
                 </div>
               </a>
             ))}
+          </div>
+          
+          {/* YouTube Channel Link */}
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-3 px-6 py-4 bg-card border border-border rounded-xl">
+              <Youtube className="w-6 h-6 text-[#FF0000]" />
+              <span className="text-muted-foreground">¿Querés más contenido gratis?</span>
+              <a 
+                href="https://youtube.com/@lsnetinformatica" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#FF0000] font-medium hover:underline"
+              >
+                Visitá nuestro canal de YouTube →
+              </a>
+            </div>
           </div>
         </div>
       </section>
