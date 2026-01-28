@@ -49,7 +49,7 @@ const borderColorClasses: Record<string, string> = {
 
 const ThreePillars = () => {
   return (
-    <section id="pillars" className="py-32 relative">
+    <section id="pillars" className="py-20 relative">
       {/* Background */}
       <div className="absolute inset-0 grid-background opacity-10" />
       
