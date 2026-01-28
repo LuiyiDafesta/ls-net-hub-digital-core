@@ -1,7 +1,4 @@
 import { ChevronDown } from "lucide-react";
-import { Suspense, lazy } from "react";
-
-const NexusScene = lazy(() => import("./NexusScene"));
 
 const HeroSection = () => {
   const scrollToContent = () => {
@@ -10,20 +7,15 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 grid-background opacity-20" />
+      <div className="absolute inset-0 grid-background opacity-30" />
       <div className="absolute inset-0 radial-glow" />
       
       {/* Floating Orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] animate-pulse-glow" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-[100px] animate-pulse-glow animation-delay-200" />
       <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-success/10 rounded-full blur-[100px] animate-pulse-glow animation-delay-400" />
-
-      {/* 3D Scene */}
-      <Suspense fallback={null}>
-        <NexusScene />
-      </Suspense>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
