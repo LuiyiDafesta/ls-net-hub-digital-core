@@ -28,22 +28,15 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 animate-fade-in-up opacity-0">
-            <span className="text-foreground">The Nexus of </span>
-            <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">
-              AI
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up opacity-0">
+            <span className="text-foreground">The Nexus of</span>
+            <br />
+            <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">
+                AI, Infrastructure & Tech Education
+              </span>
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-secondary via-primary to-success rounded-full shadow-[0_0_20px_hsla(211,100%,50%,0.5)]" />
             </span>
-            <span className="text-foreground">, </span>
-            <span className="bg-gradient-to-r from-primary via-warning to-secondary bg-clip-text text-transparent">
-              Infrastructure
-            </span>
-            <span className="text-foreground">,</span>
-            <br className="hidden md:block" />
-            <span className="text-foreground"> and </span>
-            <span className="bg-gradient-to-r from-success via-secondary to-primary bg-clip-text text-transparent">
-              Tech Education
-            </span>
-            <span className="text-foreground">.</span>
           </h1>
 
           {/* Subtitle */}
