@@ -24,7 +24,7 @@ const contactMethods = [
     icon: MapPin,
     title: "Ubicación",
     value: "Buenos Aires, Argentina",
-    description: "Operamos de forma remota en LATAM",
+    description: "Operamos de forma remota en LATAM, USA y Europa",
   },
 ];
 
