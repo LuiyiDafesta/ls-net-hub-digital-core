@@ -27,7 +27,7 @@ const HeroSection = () => {
               <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">
                 AI, Infrastructure & Tech Education
               </span>
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-secondary via-primary to-success rounded-full shadow-[0_0_20px_hsla(211,100%,50%,0.5)]" />
+              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-secondary via-primary to-success rounded-full shadow-[0_0_20px_hsla(211,100%,50%,0.5)]" />
             </span>
           </h1>
 
