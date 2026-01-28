@@ -1,71 +1,76 @@
-import { Server, Shield, Zap, Globe, Clock, HardDrive, Cpu, Activity, CheckCircle, ExternalLink, Lock, Gauge } from "lucide-react";
+import { Server, Shield, Zap, Globe, Clock, HardDrive, Activity, CheckCircle, ExternalLink, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const vpsPlans = [
+const hostingPlans = [
   {
-    name: "Starter",
-    description: "Perfect for small projects and development",
-    price: 19,
+    name: "Hosting Básico",
+    description: "Ideal para emprendedores y pequeños negocios",
+    price: "70.000",
+    currency: "ARS",
+    period: "/año",
     popular: false,
-    specs: {
-      cpu: "2 vCPU Cores",
-      ram: "4 GB RAM",
-      storage: "80 GB NVMe SSD",
-      bandwidth: "2 TB Transfer",
-      ipv4: "1 Dedicated IPv4",
-    },
-    features: ["Basic DDoS Protection", "Weekly Backups", "24/7 Monitoring"],
+    features: [
+      "Casillas de email ilimitadas",
+      "Webmail, POP, IMAP",
+      "Panel de control intuitivo",
+      "Soporte técnico 24/7",
+      "Backup automático",
+    ],
   },
   {
-    name: "Growth",
-    description: "Ideal for growing applications and businesses",
-    price: 49,
+    name: "Hosting + WordPress",
+    description: "Nuestro producto estrella, listo para usar",
+    price: "90.000",
+    currency: "ARS",
+    period: "/año",
     popular: true,
-    specs: {
-      cpu: "4 vCPU Cores",
-      ram: "8 GB RAM",
-      storage: "160 GB NVMe SSD",
-      bandwidth: "4 TB Transfer",
-      ipv4: "1 Dedicated IPv4",
-    },
-    features: ["Advanced DDoS Protection", "Daily Backups", "24/7 Priority Support", "Free SSL Certificate"],
+    features: [
+      "WordPress preinstalado",
+      "Certificado SSL incluido",
+      "Casillas de email ilimitadas",
+      "Dominio personalizado incluido",
+      "Panel de control intuitivo",
+      "Soporte técnico 24/7",
+    ],
   },
   {
-    name: "Pro",
-    description: "For mission-critical production workloads",
-    price: 99,
+    name: "Premium Full",
+    description: "Todo incluido para desarrolladores profesionales",
+    price: "200.000",
+    currency: "ARS",
+    period: "/año",
     popular: false,
-    specs: {
-      cpu: "8 vCPU Cores",
-      ram: "16 GB RAM",
-      storage: "320 GB NVMe SSD",
-      bandwidth: "8 TB Transfer",
-      ipv4: "2 Dedicated IPv4",
-    },
-    features: ["Enterprise DDoS Protection", "Hourly Backups", "24/7 Priority Support", "Free SSL Certificate", "Load Balancer Ready"],
+    features: [
+      "WordPress + Bricks Builder",
+      "Licencias premium ilimitadas",
+      "Core Framework + Crocoblock",
+      "Certificado SSL incluido",
+      "Casillas de email ilimitadas",
+      "Soporte prioritario 24/7",
+    ],
   },
 ];
 
 const additionalServices = [
   {
     icon: Lock,
-    title: "SSL Certificates",
-    description: "Secure your websites with industry-standard encryption. Free with Growth plans and above.",
-    price: "From $9/year",
+    title: "Certificados SSL",
+    description: "Distintos niveles de certificados según tus necesidades de seguridad.",
+    price: "Desde ARS 20.000",
   },
   {
     icon: Globe,
-    title: "Domain Registration",
-    description: "Register and manage your domains with competitive pricing and free WHOIS privacy.",
-    price: "From $12/year",
+    title: "Dominios",
+    description: "Amplia gama de extensiones disponibles. Registro y renovación anual.",
+    price: "Desde ARS 25.000/año",
   },
   {
-    icon: Gauge,
-    title: "Managed WordPress",
-    description: "Optimized WordPress hosting with automatic updates, caching, and security hardening.",
-    price: "From $29/month",
+    icon: Server,
+    title: "VPS",
+    description: "Servidores privados virtuales con configuración personalizada según tu proyecto.",
+    price: "Desde ARS 100.000/año",
   },
 ];
 
@@ -115,16 +120,15 @@ const CloudPage = () => {
             </span>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 animate-fade-in-up opacity-0 animation-delay-200">
-              <span className="text-foreground">Rock-Solid Infrastructure</span>
+              <span className="text-foreground">Hosting &amp; Cloud</span>
               <br />
               <span className="bg-gradient-to-r from-primary via-secondary to-success bg-clip-text text-transparent">
-                for Your Applications.
+                para tu negocio.
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed animate-fade-in-up opacity-0 animation-delay-400">
-              Premium VPS, secure hosting, and domain management designed for 
-              <span className="text-primary font-semibold"> performance</span>.
+              Soluciones de alojamiento seguras, rápidas y escalables con <span className="text-primary font-semibold">SLA 99.9%</span> y soporte 24/7.
             </p>
           </div>
         </div>
@@ -146,25 +150,24 @@ const CloudPage = () => {
         </div>
       </section>
 
-      {/* VPS Pricing */}
       <section className="py-24 relative">
         <div className="absolute inset-0 grid-background opacity-10" />
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold text-primary uppercase tracking-widest">
-              VPS Hosting
+              Planes de Hosting
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-              Choose Your Plan
+              Elegí tu plan
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              High-performance virtual private servers with dedicated resources and full root access.
+              Todos los planes incluyen panel de control, soporte 24/7, backup automático y migración sin downtime.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {vpsPlans.map((plan) => (
+            {hostingPlans.map((plan) => (
               <div
                 key={plan.name}
                 className={`relative p-8 rounded-2xl border transition-all duration-300 hover:translate-y-[-4px] ${
@@ -175,7 +178,7 @@ const CloudPage = () => {
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-sm font-medium rounded-full">
-                    Most Popular
+                    Más Popular
                   </div>
                 )}
                 
@@ -183,32 +186,9 @@ const CloudPage = () => {
                   <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
                   <p className="text-sm text-muted-foreground mb-4">{plan.description}</p>
                   <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-4xl md:text-5xl font-bold text-foreground">${plan.price}</span>
-                    <span className="text-muted-foreground">/month</span>
-                  </div>
-                </div>
-                
-                {/* Specs */}
-                <div className="space-y-3 mb-8 pb-8 border-b border-border">
-                  <div className="flex items-center gap-3">
-                    <Cpu className="w-5 h-5 text-primary" />
-                    <span className="text-foreground">{plan.specs.cpu}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Server className="w-5 h-5 text-primary" />
-                    <span className="text-foreground">{plan.specs.ram}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <HardDrive className="w-5 h-5 text-primary" />
-                    <span className="text-foreground">{plan.specs.storage}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Activity className="w-5 h-5 text-primary" />
-                    <span className="text-foreground">{plan.specs.bandwidth}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Globe className="w-5 h-5 text-primary" />
-                    <span className="text-foreground">{plan.specs.ipv4}</span>
+                    <span className="text-sm text-muted-foreground">{plan.currency}</span>
+                    <span className="text-4xl md:text-5xl font-bold text-foreground">{plan.price}</span>
+                    <span className="text-muted-foreground">{plan.period}</span>
                   </div>
                 </div>
                 
@@ -223,7 +203,7 @@ const CloudPage = () => {
                 </ul>
                 
                 <a 
-                  href="https://portal.lsnethub.com" 
+                  href="https://lsnetinformatica.com.ar" 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
@@ -231,7 +211,7 @@ const CloudPage = () => {
                     variant={plan.popular ? "hero" : "outline"} 
                     className="w-full"
                   >
-                    Order Now
+                    Contratar Ahora
                     <ExternalLink className="w-4 h-4" />
                   </Button>
                 </a>
@@ -240,7 +220,7 @@ const CloudPage = () => {
           </div>
           
           <p className="text-center text-muted-foreground text-sm mt-8">
-            Need a custom configuration? <a href="#contact" className="text-secondary hover:underline">Contact our sales team</a>
+            ¿Necesitás una configuración especial? <a href="/contact" className="text-secondary hover:underline">Contactá a nuestro equipo</a>
           </p>
         </div>
       </section>
@@ -250,10 +230,10 @@ const CloudPage = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold text-secondary uppercase tracking-widest">
-              Complete Your Stack
+              Servicios Adicionales
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-              Additional Services
+              Completá tu stack
             </h2>
           </div>
 
@@ -284,26 +264,28 @@ const CloudPage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-              Ready to Scale?
+              ¿Listo para empezar?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Deploy your applications on infrastructure that grows with you. 
-              Get started in minutes with our automated provisioning.
+              Desplegá tu infraestructura en minutos con nuestro aprovisionamiento automático. 
+              Migración sin downtime desde otros proveedores.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a 
-                href="https://portal.lsnethub.com" 
+                href="https://lsnetinformatica.com.ar" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
                 <Button variant="hero" size="xl">
-                  Get Started
+                  Ver Planes
                   <Zap className="w-5 h-5" />
                 </Button>
               </a>
-              <Button variant="outline" size="xl">
-                Contact Sales
-              </Button>
+              <a href="/contact">
+                <Button variant="outline" size="xl">
+                  Contactar Ventas
+                </Button>
+              </a>
             </div>
           </div>
         </div>

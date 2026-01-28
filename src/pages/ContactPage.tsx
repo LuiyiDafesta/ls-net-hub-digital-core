@@ -11,20 +11,23 @@ const contactMethods = [
   {
     icon: Mail,
     title: "Email",
-    value: "contacto@lsnethub.com",
+    value: "info@lsnethub.com",
     description: "Te respondemos en menos de 24hs",
+    href: "mailto:info@lsnethub.com",
   },
   {
     icon: Phone,
-    title: "Teléfono",
-    value: "+54 11 1234-5678",
+    title: "WhatsApp",
+    value: "+54 9 11 6044-9717",
     description: "Lunes a Viernes, 9:00 - 18:00",
+    href: "https://wa.me/5491160449717",
   },
   {
     icon: MapPin,
     title: "Ubicación",
     value: "Buenos Aires, Argentina",
     description: "Operamos de forma remota en LATAM, USA y Europa",
+    href: null,
   },
 ];
 
@@ -91,18 +94,36 @@ const ContactPage = () => {
       <section className="py-12 border-y border-border bg-card/30">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {contactMethods.map((method) => (
-              <div key={method.title} className="flex items-start gap-4 p-6 rounded-xl bg-card/50 border border-border/50">
-                <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                  <method.icon className="w-6 h-6 text-secondary" />
+            {contactMethods.map((method) => {
+              const content = (
+                <>
+                  <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
+                    <method.icon className="w-6 h-6 text-secondary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">{method.title}</h3>
+                    <p className="text-foreground font-medium">{method.value}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{method.description}</p>
+                  </div>
+                </>
+              );
+              
+              return method.href ? (
+                <a
+                  key={method.title}
+                  href={method.href}
+                  target={method.href.startsWith("http") ? "_blank" : undefined}
+                  rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="flex items-start gap-4 p-6 rounded-xl bg-card/50 border border-border/50 hover:border-secondary/50 transition-colors duration-300"
+                >
+                  {content}
+                </a>
+              ) : (
+                <div key={method.title} className="flex items-start gap-4 p-6 rounded-xl bg-card/50 border border-border/50">
+                  {content}
                 </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-1">{method.title}</h3>
-                  <p className="text-foreground font-medium">{method.value}</p>
-                  <p className="text-sm text-muted-foreground mt-1">{method.description}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

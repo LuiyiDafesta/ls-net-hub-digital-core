@@ -12,6 +12,7 @@ const Navbar = () => {
     { label: "Cloud", href: "/cloud" },
     { label: "Academy", href: "/academy" },
     { label: "Media", href: "/media" },
+    { label: "Nosotros", href: "/about" },
   ];
 
   return (
