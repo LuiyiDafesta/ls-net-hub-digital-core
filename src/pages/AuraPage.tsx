@@ -3,107 +3,115 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const DEMO_URL = "https://lsnetinformatica.com.ar/agentes/login";
 const REGISTER_URL = "https://lsnetinformatica.com.ar/agentes/register";
 
 const AuraPage = () => {
+  const { t } = useLanguage();
+
   const stats = [
-    { value: "10K+", label: "Agentes Activos" },
-    { value: "50M+", label: "Mensajes" },
-    { value: "99.9%", label: "Uptime" },
-    { value: "2,500+", label: "Clientes Felices" },
+    { value: "10K+", labelKey: "activeAgents" },
+    { value: "50M+", labelKey: "messages" },
+    { value: "99.9%", labelKey: "uptime" },
+    { value: "2,500+", labelKey: "happyClients" },
   ];
 
   const features = [
     {
       icon: Bot,
-      title: "Agentes con IA",
-      description: "Crea agentes conversacionales inteligentes entrenados con tus propios datos.",
+      titleKey: "featureAgents",
+      descKey: "featureAgentsDesc",
       color: "text-secondary",
       glow: "shadow-[0_0_30px_hsla(211,100%,50%,0.3)]",
     },
     {
       icon: FileText,
-      title: "Entrenamiento con Docs",
-      description: "Sube PDFs, documentos y URLs para construir tu base de conocimientos.",
+      titleKey: "featureDocs",
+      descKey: "featureDocsDesc",
       color: "text-primary",
       glow: "shadow-[0_0_30px_hsla(0,100%,60%,0.3)]",
     },
     {
       icon: Globe,
-      title: "Widget Web",
-      description: "Inserta un chat personalizable en cualquier sitio web.",
+      titleKey: "featureWidget",
+      descKey: "featureWidgetDesc",
       color: "text-success",
       glow: "shadow-[0_0_30px_hsla(134,61%,41%,0.3)]",
     },
     {
       icon: MessageSquare,
-      title: "Integración WhatsApp",
-      description: "Conecta tus agentes a WhatsApp para soporte móvil directo.",
+      titleKey: "featureWhatsApp",
+      descKey: "featureWhatsAppDesc",
       color: "text-warning",
       glow: "shadow-[0_0_30px_hsla(45,100%,51%,0.3)]",
     },
     {
       icon: CreditCard,
-      title: "Uso por Créditos",
-      description: "Paga solo por lo que usas con precios transparentes y sin sorpresas.",
+      titleKey: "featureCredits",
+      descKey: "featureCreditsDesc",
       color: "text-secondary",
       glow: "shadow-[0_0_30px_hsla(211,100%,50%,0.3)]",
     },
     {
       icon: Shield,
-      title: "Seguridad Empresarial",
-      description: "Cumplimiento SOC 2 con encriptación de extremo a extremo.",
+      titleKey: "featureSecurity",
+      descKey: "featureSecurityDesc",
       color: "text-primary",
       glow: "shadow-[0_0_30px_hsla(0,100%,60%,0.3)]",
     },
   ];
 
   const benefits = [
-    { icon: Clock, text: "Soporte al cliente automatizado 24/7" },
-    { icon: TrendingUp, text: "Reduce tiempos de respuesta en un 80%" },
-    { icon: Users, text: "Escala sin contratar más personal" },
-    { icon: Zap, text: "Captura y califica leads automáticamente" },
-    { icon: Languages, text: "Soporte multilingüe inmediato" },
-    { icon: BarChart3, text: "Análisis detallados y métricas" },
+    { icon: Clock, textKey: "benefit1" },
+    { icon: TrendingUp, textKey: "benefit2" },
+    { icon: Users, textKey: "benefit3" },
+    { icon: Zap, textKey: "benefit4" },
+    { icon: Languages, textKey: "benefit5" },
+    { icon: BarChart3, textKey: "benefit6" },
   ];
 
   const pricingPlans = [
     {
-      name: "Starter",
+      nameKey: "planStarter",
       price: "$0",
       period: "/mes",
-      description: "Perfecto para probar y proyectos personales.",
-      features: ["1 Agente IA", "50 Créditos/mes", "RAG Limitado"],
-      cta: "Comenzar",
+      periodEn: "/month",
+      descKey: "planStarterDesc",
+      features: ["planStarterFeature1", "planStarterFeature2", "planStarterFeature3"],
+      ctaKey: "planStarterCta",
       popular: false,
     },
     {
-      name: "Professional",
+      nameKey: "planPro",
       price: "$25",
       period: "/mes",
-      description: "Para creadores serios y crecimiento.",
-      features: ["3 Agentes IA", "500 Créditos/mes", "RAG Completo", "Soporte por Email"],
-      cta: "Prueba Gratuita",
+      periodEn: "/month",
+      descKey: "planProDesc",
+      features: ["planProFeature1", "planProFeature2", "planProFeature3", "planProFeature4"],
+      ctaKey: "planProCta",
       popular: true,
     },
     {
-      name: "Business",
+      nameKey: "planBusiness",
       price: "$75",
       period: "/mes",
-      description: "Para agencias y empresas medianas.",
-      features: ["5 Agentes IA", "2,000 Créditos/mes", "Soporte Prioritario", "Acceso a API"],
-      cta: "Comenzar Ahora",
+      periodEn: "/month",
+      descKey: "planBusinessDesc",
+      features: ["planBusinessFeature1", "planBusinessFeature2", "planBusinessFeature3", "planBusinessFeature4"],
+      ctaKey: "planBusinessCta",
       popular: false,
     },
   ];
 
   const creditPacks = [
-    { credits: "500", name: "Paquete Básico", price: "$25" },
-    { credits: "2,000", name: "Paquete Pro", price: "$60", popular: true },
-    { credits: "5,000", name: "Paquete Enterprise", price: "$130" },
+    { credits: "500", nameKey: "packBasic", price: "$25" },
+    { credits: "2,000", nameKey: "packPro", price: "$60", popular: true },
+    { credits: "5,000", nameKey: "packEnterprise", price: "$130" },
   ];
+
+  const { language } = useLanguage();
 
   return (
     <div className="min-h-screen bg-background">
@@ -125,23 +133,23 @@ const AuraPage = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 border border-border/50 backdrop-blur-sm mb-8 animate-fade-in-up opacity-0">
               <Sparkles className="w-4 h-4 text-warning" />
-              <span className="text-sm text-muted-foreground">🚀 Nuevo soporte para GPT-4 y Claude</span>
+              <span className="text-sm text-muted-foreground">{t("aura", "badge")}</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 animate-fade-in-up opacity-0 animation-delay-200">
-              <span className="text-foreground">Construye Agentes IA Que</span>
+              <span className="text-foreground">{t("aura", "heroTitle1")}</span>
               <br />
               <span className="relative inline-block mt-2">
                 <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">
-                  Realmente Entiendan Tu Negocio
+                  {t("aura", "heroTitle2")}
                 </span>
               </span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed animate-fade-in-up opacity-0 animation-delay-400">
-              Crea agentes conversacionales entrenados con tus documentos. Despliega en web, WhatsApp y más en minutos.
+              {t("aura", "heroDescription")}
             </p>
 
             {/* CTA Buttons */}
@@ -149,20 +157,20 @@ const AuraPage = () => {
               <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
                 <Button variant="gradient" size="xl" className="group">
                   <span className="flex items-center gap-2">
-                    Prueba Gratuita
+                    {t("aura", "freeTrial")}
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
               </a>
               <a href={DEMO_URL} target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="xl">
-                  Ver Demo
+                  {t("aura", "viewDemo")}
                 </Button>
               </a>
             </div>
 
             <p className="text-sm text-muted-foreground animate-fade-in-up opacity-0 animation-delay-600">
-              Sin tarjeta de crédito • 50 créditos gratis
+              {t("aura", "noCreditCard")}
             </p>
 
             {/* Stats */}
@@ -172,7 +180,7 @@ const AuraPage = () => {
                   <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+                  <div className="text-sm text-muted-foreground mt-1">{t("aura", stat.labelKey)}</div>
                 </div>
               ))}
             </div>
@@ -188,10 +196,10 @@ const AuraPage = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
-              Todo lo que necesitas para crear Agentes IA
+              {t("aura", "featuresTitle")}
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Una plataforma completa para crear, entrenar y desplegar IA conversacional.
+              {t("aura", "featuresSubtitle")}
             </p>
           </div>
 
@@ -205,8 +213,8 @@ const AuraPage = () => {
                   <div className={`w-14 h-14 rounded-xl bg-card flex items-center justify-center mb-6 ${feature.glow}`}>
                     <feature.icon className={`w-7 h-7 ${feature.color}`} />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                  <h3 className="text-xl font-semibold text-foreground mb-3">{t("aura", feature.titleKey)}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{t("aura", feature.descKey)}</p>
                 </CardContent>
               </Card>
             ))}
@@ -221,10 +229,10 @@ const AuraPage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
-              Precios Simples y Transparentes
+              {t("aura", "pricingTitle")}
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Comienza gratis, paga a medida que creces.
+              {t("aura", "pricingSubtitle")}
             </p>
           </div>
 
@@ -240,24 +248,24 @@ const AuraPage = () => {
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="bg-secondary text-secondary-foreground text-xs font-semibold px-3 py-1 rounded-full">
-                      POPULAR
+                      {t("aura", "popular")}
                     </span>
                   </div>
                 )}
                 <CardHeader className="text-center pb-2">
-                  <CardTitle className="text-xl">{plan.name}</CardTitle>
+                  <CardTitle className="text-xl">{t("aura", plan.nameKey)}</CardTitle>
                   <div className="mt-4">
                     <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                    <span className="text-muted-foreground">{plan.period}</span>
+                    <span className="text-muted-foreground">{language === "en" ? plan.periodEn : plan.period}</span>
                   </div>
-                  <CardDescription className="mt-2">{plan.description}</CardDescription>
+                  <CardDescription className="mt-2">{t("aura", plan.descKey)}</CardDescription>
                 </CardHeader>
                 <CardContent className="pt-4">
                   <ul className="space-y-3 mb-6">
-                    {plan.features.map((feature, i) => (
+                    {plan.features.map((featureKey, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
                         <div className="w-1.5 h-1.5 rounded-full bg-success" />
-                        {feature}
+                        {t("aura", featureKey)}
                       </li>
                     ))}
                   </ul>
@@ -266,7 +274,7 @@ const AuraPage = () => {
                       variant={plan.popular ? "hero" : "outline"} 
                       className="w-full"
                     >
-                      {plan.cta}
+                      {t("aura", plan.ctaKey)}
                     </Button>
                   </a>
                 </CardContent>
@@ -277,7 +285,7 @@ const AuraPage = () => {
           {/* Credit Packs */}
           <div className="max-w-4xl mx-auto">
             <h3 className="text-xl font-semibold text-center mb-8 text-foreground">
-              Paquetes de Créditos Adicionales
+              {t("aura", "creditPacksTitle")}
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
               {creditPacks.map((pack, index) => (
@@ -289,11 +297,11 @@ const AuraPage = () => {
                 >
                   {pack.popular && (
                     <span className="absolute -top-2 right-4 bg-warning text-warning-foreground text-xs font-semibold px-2 py-0.5 rounded">
-                      Más vendido
+                      {t("aura", "bestSeller")}
                     </span>
                   )}
-                  <div className="text-2xl font-bold text-foreground mb-1">{pack.credits} Créditos</div>
-                  <div className="text-sm text-muted-foreground mb-3">{pack.name}</div>
+                  <div className="text-2xl font-bold text-foreground mb-1">{pack.credits} {t("aura", "credits")}</div>
+                  <div className="text-sm text-muted-foreground mb-3">{t("aura", pack.nameKey)}</div>
                   <div className="text-3xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                     {pack.price}
                   </div>
@@ -301,7 +309,7 @@ const AuraPage = () => {
               ))}
             </div>
             <p className="text-xs text-muted-foreground text-center mt-4">
-              * Los paquetes de créditos requieren una suscripción Professional o Business activa.
+              {t("aura", "creditPacksNote")}
             </p>
           </div>
         </div>
@@ -312,10 +320,10 @@ const AuraPage = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
-              Transforma la Experiencia de tus Clientes
+              {t("aura", "benefitsTitle")}
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Únete a miles de negocios que usan agentes IA para brindar soporte instantáneo y personalizado a escala.
+              {t("aura", "benefitsSubtitle")}
             </p>
           </div>
 
@@ -328,7 +336,7 @@ const AuraPage = () => {
                 <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
                   <benefit.icon className="w-5 h-5 text-secondary" />
                 </div>
-                <span className="text-foreground">{benefit.text}</span>
+                <span className="text-foreground">{t("aura", benefit.textKey)}</span>
               </div>
             ))}
           </div>
@@ -345,25 +353,25 @@ const AuraPage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">
-              ¿Listo para crear tu primer Agente IA?
+              {t("aura", "ctaTitle")}
             </h2>
             
             <p className="text-xl text-muted-foreground mb-12">
-              Comienza gratis y despliega tu primer agente conversacional en menos de 5 minutos.
+              {t("aura", "ctaDescription")}
             </p>
 
             <div className="flex flex-col items-center gap-6">
               <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
                 <Button variant="gradient" size="xl" className="group">
                   <span className="flex items-center gap-2">
-                    Comenzar Gratis
+                    {t("aura", "startFree")}
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
               </a>
               
               <p className="text-sm text-muted-foreground">
-                Sin tarjeta de crédito • 50 créditos gratis
+                {t("aura", "noCreditCard")}
               </p>
             </div>
           </div>

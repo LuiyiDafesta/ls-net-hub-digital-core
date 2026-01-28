@@ -281,6 +281,127 @@ export const translations = {
     dark: { es: "Oscuro", en: "Dark" },
     system: { es: "Sistema", en: "System" },
   },
+
+  // AURA Page
+  aura: {
+    // Hero
+    badge: { es: "🚀 Nuevo soporte para GPT-4 y Claude", en: "🚀 New GPT-4 and Claude support" },
+    heroTitle1: { es: "Construye Agentes IA Que", en: "Build AI Agents That" },
+    heroTitle2: { es: "Realmente Entiendan Tu Negocio", en: "Truly Understand Your Business" },
+    heroDescription: { 
+      es: "Crea agentes conversacionales entrenados con tus documentos. Despliega en web, WhatsApp y más en minutos.", 
+      en: "Create conversational agents trained on your documents. Deploy to web, WhatsApp and more in minutes." 
+    },
+    freeTrial: { es: "Prueba Gratuita", en: "Free Trial" },
+    viewDemo: { es: "Ver Demo", en: "View Demo" },
+    noCreditCard: { es: "Sin tarjeta de crédito • 50 créditos gratis", en: "No credit card • 50 free credits" },
+    
+    // Stats
+    activeAgents: { es: "Agentes Activos", en: "Active Agents" },
+    messages: { es: "Mensajes", en: "Messages" },
+    uptime: { es: "Uptime", en: "Uptime" },
+    happyClients: { es: "Clientes Felices", en: "Happy Clients" },
+    
+    // Features Section
+    featuresTitle: { es: "Todo lo que necesitas para crear Agentes IA", en: "Everything you need to create AI Agents" },
+    featuresSubtitle: { 
+      es: "Una plataforma completa para crear, entrenar y desplegar IA conversacional.", 
+      en: "A complete platform to create, train and deploy conversational AI." 
+    },
+    featureAgents: { es: "Agentes con IA", en: "AI Agents" },
+    featureAgentsDesc: { 
+      es: "Crea agentes conversacionales inteligentes entrenados con tus propios datos.", 
+      en: "Create intelligent conversational agents trained with your own data." 
+    },
+    featureDocs: { es: "Entrenamiento con Docs", en: "Docs Training" },
+    featureDocsDesc: { 
+      es: "Sube PDFs, documentos y URLs para construir tu base de conocimientos.", 
+      en: "Upload PDFs, documents and URLs to build your knowledge base." 
+    },
+    featureWidget: { es: "Widget Web", en: "Web Widget" },
+    featureWidgetDesc: { 
+      es: "Inserta un chat personalizable en cualquier sitio web.", 
+      en: "Embed a customizable chat on any website." 
+    },
+    featureWhatsApp: { es: "Integración WhatsApp", en: "WhatsApp Integration" },
+    featureWhatsAppDesc: { 
+      es: "Conecta tus agentes a WhatsApp para soporte móvil directo.", 
+      en: "Connect your agents to WhatsApp for direct mobile support." 
+    },
+    featureCredits: { es: "Uso por Créditos", en: "Credit-based Usage" },
+    featureCreditsDesc: { 
+      es: "Paga solo por lo que usas con precios transparentes y sin sorpresas.", 
+      en: "Pay only for what you use with transparent pricing and no surprises." 
+    },
+    featureSecurity: { es: "Seguridad Empresarial", en: "Enterprise Security" },
+    featureSecurityDesc: { 
+      es: "Cumplimiento SOC 2 con encriptación de extremo a extremo.", 
+      en: "SOC 2 compliance with end-to-end encryption." 
+    },
+    
+    // Pricing Section
+    pricingTitle: { es: "Precios Simples y Transparentes", en: "Simple and Transparent Pricing" },
+    pricingSubtitle: { es: "Comienza gratis, paga a medida que creces.", en: "Start free, pay as you grow." },
+    
+    // Plans
+    planStarter: { es: "Starter", en: "Starter" },
+    planStarterDesc: { es: "Perfecto para probar y proyectos personales.", en: "Perfect for testing and personal projects." },
+    planStarterFeature1: { es: "1 Agente IA", en: "1 AI Agent" },
+    planStarterFeature2: { es: "50 Créditos/mes", en: "50 Credits/month" },
+    planStarterFeature3: { es: "RAG Limitado", en: "Limited RAG" },
+    planStarterCta: { es: "Comenzar", en: "Get Started" },
+    
+    planPro: { es: "Professional", en: "Professional" },
+    planProDesc: { es: "Para creadores serios y crecimiento.", en: "For serious creators and growth." },
+    planProFeature1: { es: "3 Agentes IA", en: "3 AI Agents" },
+    planProFeature2: { es: "500 Créditos/mes", en: "500 Credits/month" },
+    planProFeature3: { es: "RAG Completo", en: "Full RAG" },
+    planProFeature4: { es: "Soporte por Email", en: "Email Support" },
+    planProCta: { es: "Prueba Gratuita", en: "Free Trial" },
+    
+    planBusiness: { es: "Business", en: "Business" },
+    planBusinessDesc: { es: "Para agencias y empresas medianas.", en: "For agencies and medium businesses." },
+    planBusinessFeature1: { es: "5 Agentes IA", en: "5 AI Agents" },
+    planBusinessFeature2: { es: "2,000 Créditos/mes", en: "2,000 Credits/month" },
+    planBusinessFeature3: { es: "Soporte Prioritario", en: "Priority Support" },
+    planBusinessFeature4: { es: "Acceso a API", en: "API Access" },
+    planBusinessCta: { es: "Comenzar Ahora", en: "Start Now" },
+    
+    popular: { es: "POPULAR", en: "POPULAR" },
+    
+    // Credit Packs
+    creditPacksTitle: { es: "Paquetes de Créditos Adicionales", en: "Additional Credit Packs" },
+    packBasic: { es: "Paquete Básico", en: "Basic Pack" },
+    packPro: { es: "Paquete Pro", en: "Pro Pack" },
+    packEnterprise: { es: "Paquete Enterprise", en: "Enterprise Pack" },
+    bestSeller: { es: "Más vendido", en: "Best seller" },
+    credits: { es: "Créditos", en: "Credits" },
+    creditPacksNote: { 
+      es: "* Los paquetes de créditos requieren una suscripción Professional o Business activa.", 
+      en: "* Credit packs require an active Professional or Business subscription." 
+    },
+    
+    // Benefits Section
+    benefitsTitle: { es: "Transforma la Experiencia de tus Clientes", en: "Transform Your Customer Experience" },
+    benefitsSubtitle: { 
+      es: "Únete a miles de negocios que usan agentes IA para brindar soporte instantáneo y personalizado a escala.", 
+      en: "Join thousands of businesses using AI agents to provide instant, personalized support at scale." 
+    },
+    benefit1: { es: "Soporte al cliente automatizado 24/7", en: "24/7 automated customer support" },
+    benefit2: { es: "Reduce tiempos de respuesta en un 80%", en: "Reduce response times by 80%" },
+    benefit3: { es: "Escala sin contratar más personal", en: "Scale without hiring more staff" },
+    benefit4: { es: "Captura y califica leads automáticamente", en: "Capture and qualify leads automatically" },
+    benefit5: { es: "Soporte multilingüe inmediato", en: "Instant multilingual support" },
+    benefit6: { es: "Análisis detallados y métricas", en: "Detailed analytics and metrics" },
+    
+    // Final CTA
+    ctaTitle: { es: "¿Listo para crear tu primer Agente IA?", en: "Ready to create your first AI Agent?" },
+    ctaDescription: { 
+      es: "Comienza gratis y despliega tu primer agente conversacional en menos de 5 minutos.", 
+      en: "Start free and deploy your first conversational agent in less than 5 minutes." 
+    },
+    startFree: { es: "Comenzar Gratis", en: "Start Free" },
+  },
 } as const;
 
 export type TranslationKey = keyof typeof translations;
