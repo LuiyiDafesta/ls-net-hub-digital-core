@@ -256,7 +256,7 @@ const MediaPage = () => {
           
           <div className="text-center mt-12">
             <a 
-              href="https://www.youtube.com/@LsNetInformatica/videos" 
+              href="https://www.youtube.com/@lsnetinformatica/shorts"
               target="_blank" 
               rel="noopener noreferrer"
             >
