@@ -1,66 +1,69 @@
-import { Users, Target, Globe, Clock, Award, Zap, MessageSquare, Shield } from "lucide-react";
+import { Users, Target, Globe, Zap, MessageSquare, Shield, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const stats = [
-  { value: "20+", label: "Años de experiencia" },
-  { value: "200+", label: "Clientes activos" },
-  { value: "99.9%", label: "Uptime garantizado" },
-  { value: "24/7", label: "Soporte técnico" },
-];
-
-const values = [
-  {
-    icon: Target,
-    title: "Ecosistema Integrado",
-    description: "Combinamos hosting, automatización, formación y soporte bajo una arquitectura única. Accedés a múltiples servicios desde una sola relación comercial.",
-  },
-  {
-    icon: Zap,
-    title: "Automatización Avanzada",
-    description: "Implementamos flujos de trabajo con n8n e inteligencia artificial. Reducimos tareas repetitivas entre 40-80% del tiempo operativo.",
-  },
-  {
-    icon: Users,
-    title: "Academia Propia",
-    description: "Cursos especializados en automatización, hosting, marketing digital y desarrollo web. Certificaciones que generan valor para tu equipo.",
-  },
-  {
-    icon: Shield,
-    title: "Soporte Especializado",
-    description: "Equipo técnico enfocado, no tercerizado. Disponibilidad 24/7 para infraestructura crítica. Respuesta en máximo 4 horas para incidentes.",
-  },
-];
-
-const testimonials = [
-  {
-    quote: "Trabajo con LsNet informática desde hace más de 13 años. Se ocupan de todo: solo llamo y comento las necesidades y en unas horas ya estamos trabajando con la infraestructura que necesitamos.",
-    author: "Cliente Corporativo",
-    role: "13+ años de relación",
-  },
-  {
-    quote: "Conocí LsNet informática por un conocido que tiene una Pyme. Trabajan muy responsablemente y solucionan problemas de software, hardware e infraestructura. Los recomiendo sin ninguna duda.",
-    author: "Dueño de Pyme",
-    role: "Recomendación directa",
-  },
-  {
-    quote: "Me salió un negocio de importación y necesitaba resolver rápidamente el tema con mi página de ventas. En menos de dos horas ya estaba enviando emails con mi propio dominio.",
-    author: "Importador",
-    role: "Solución express",
-  },
-];
-
-const countries = [
-  { name: "Argentina", flag: "🇦🇷" },
-  { name: "México", flag: "🇲🇽" },
-  { name: "Chile", flag: "🇨🇱" },
-  { name: "España", flag: "🇪🇸" },
-  { name: "Estados Unidos", flag: "🇺🇸" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutPage = () => {
+  const { t, language } = useLanguage();
+
+  const stats = [
+    { value: "20+", labelKey: "yearsExperience" },
+    { value: "200+", labelKey: "activeClients" },
+    { value: "99.9%", labelKey: "uptimeGuaranteed" },
+    { value: "24/7", labelKey: "techSupport" },
+  ];
+
+  const values = [
+    {
+      icon: Target,
+      titleKey: "integratedEcosystem",
+      descKey: "integratedDesc",
+    },
+    {
+      icon: Zap,
+      titleKey: "advancedAutomation",
+      descKey: "automationDesc",
+    },
+    {
+      icon: Users,
+      titleKey: "ownAcademy",
+      descKey: "academyDesc",
+    },
+    {
+      icon: Shield,
+      titleKey: "specializedSupport",
+      descKey: "supportDesc",
+    },
+  ];
+
+  const testimonials = [
+    {
+      quoteKey: "testimonial1",
+      authorKey: "testimonial1Author",
+      roleKey: "testimonial1Role",
+    },
+    {
+      quoteKey: "testimonial2",
+      authorKey: "testimonial2Author",
+      roleKey: "testimonial2Role",
+    },
+    {
+      quoteKey: "testimonial3",
+      authorKey: "testimonial3Author",
+      roleKey: "testimonial3Role",
+    },
+  ];
+
+  const countries = [
+    { name: "Argentina", flag: "🇦🇷" },
+    { name: "México", flag: "🇲🇽" },
+    { name: "Chile", flag: "🇨🇱" },
+    { name: language === "es" ? "España" : "Spain", flag: "🇪🇸" },
+    { name: language === "es" ? "Estados Unidos" : "United States", flag: "🇺🇸" },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -75,19 +78,19 @@ const AboutPage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-6 animate-fade-in-up opacity-0">
-              Quiénes Somos
+              {t("about", "heroTag")}
             </span>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 animate-fade-in-up opacity-0 animation-delay-200">
-              <span className="text-foreground">Tecnología aplicada</span>
+              <span className="text-foreground">{t("about", "heroTitle1")}</span>
               <br />
               <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">
-                para hacer crecer tu negocio.
+                {t("about", "heroTitle2")}
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed animate-fade-in-up opacity-0 animation-delay-400">
-              Somos un ecosistema integrado de educación, automatización, infraestructura cloud y consultoría digital con más de <span className="text-foreground font-semibold">20 años de experiencia</span>.
+              {t("about", "heroDescription")}
             </p>
           </div>
         </div>
@@ -98,9 +101,9 @@ const AboutPage = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
+              <div key={stat.labelKey} className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-sm text-muted-foreground">{t("about", stat.labelKey)}</div>
               </div>
             ))}
           </div>
@@ -115,29 +118,27 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <span className="text-sm font-semibold text-primary uppercase tracking-widest">
-                Nuestra Misión
+                {t("about", "ourMission")}
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-                Democratizar el acceso a la tecnología
+                {t("about", "democratize")}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Democratizar el acceso a herramientas tecnológicas profesionales y conocimiento especializado, 
-                permitiendo que empresas de cualquier tamaño automaticen, crezcan y compitan a nivel internacional.
+                {t("about", "missionDesc1")}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                No vendemos "espacio en disco" ni servicios aislados. Ofrecemos <span className="text-foreground font-medium">soluciones llave en mano</span> pensadas 
-                para optimizar operaciones, reducir costos y acelerar crecimiento.
+                {t("about", "missionDesc2")}
               </p>
             </div>
             
             <div className="grid grid-cols-1 gap-6">
               {values.slice(0, 2).map((value) => (
-                <div key={value.title} className="p-6 rounded-2xl bg-card border border-border hover:border-muted transition-all duration-300">
+                <div key={value.titleKey} className="p-6 rounded-2xl bg-card border border-border hover:border-muted transition-all duration-300">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <value.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">{value.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+                  <h3 className="text-xl font-bold text-foreground mb-2">{t("about", value.titleKey)}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{t("about", value.descKey)}</p>
                 </div>
               ))}
             </div>
@@ -150,21 +151,21 @@ const AboutPage = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold text-secondary uppercase tracking-widest">
-              Propuesta de Valor
+              {t("about", "valueProposition")}
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-              ¿Por qué elegirnos?
+              {t("about", "whyChooseUs")}
             </h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value) => (
-              <div key={value.title} className="p-6 rounded-2xl bg-card border border-border hover:border-secondary/50 transition-all duration-300 group">
+              <div key={value.titleKey} className="p-6 rounded-2xl bg-card border border-border hover:border-secondary/50 transition-all duration-300 group">
                 <div className="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors">
                   <value.icon className="w-7 h-7 text-secondary" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{value.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">{t("about", value.titleKey)}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{t("about", value.descKey)}</p>
               </div>
             ))}
           </div>
@@ -178,10 +179,10 @@ const AboutPage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold text-primary uppercase tracking-widest">
-              Testimonios
+              {t("about", "testimonials")}
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-              Lo que dicen nuestros clientes
+              {t("about", "whatClientsSay")}
             </h2>
           </div>
           
@@ -193,11 +194,11 @@ const AboutPage = () => {
               >
                 <MessageSquare className="w-8 h-8 text-primary/20 absolute top-6 right-6" />
                 <p className="text-muted-foreground mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
+                  "{t("about", testimonial.quoteKey)}"
                 </p>
                 <div className="border-t border-border pt-4">
-                  <div className="font-semibold text-foreground">{testimonial.author}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                  <div className="font-semibold text-foreground">{t("about", testimonial.authorKey)}</div>
+                  <div className="text-sm text-muted-foreground">{t("about", testimonial.roleKey)}</div>
                 </div>
               </div>
             ))}
@@ -211,10 +212,10 @@ const AboutPage = () => {
           <div className="text-center mb-12">
             <Globe className="w-12 h-12 text-secondary mx-auto mb-4" />
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Presencia Internacional
+              {t("about", "internationalPresence")}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Operamos de forma remota atendiendo clientes en toda América y Europa.
+              {t("about", "presenceDesc")}
             </p>
           </div>
           
@@ -240,22 +241,21 @@ const AboutPage = () => {
           <div className="max-w-3xl mx-auto text-center">
             <Award className="w-16 h-16 text-secondary mx-auto mb-6" />
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-              ¿Listo para transformar tu negocio?
+              {t("about", "transformBusiness")}
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Contactanos hoy y descubrí cómo podemos ayudarte a automatizar, 
-              crecer y competir a nivel internacional.
+              {t("about", "ctaDesc")}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact">
                 <Button variant="hero" size="xl">
-                  Contactanos
+                  {t("common", "contactUs")}
                   <MessageSquare className="w-5 h-5" />
                 </Button>
               </Link>
               <Link to="/aura">
                 <Button variant="outline" size="xl">
-                  Probá AURA
+                  {t("about", "tryAura")}
                 </Button>
               </Link>
             </div>

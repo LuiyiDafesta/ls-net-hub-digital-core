@@ -3,16 +3,19 @@ import { Link } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import Logo from "./Logo";
 import { Button } from "./ui/button";
+import LanguageThemeSelector from "./LanguageThemeSelector";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navLinks = [
-    { label: "IA", href: "/ia" },
-    { label: "Cloud", href: "/cloud" },
-    { label: "Academy", href: "/academy" },
-    { label: "Media", href: "/media" },
-    { label: "Nosotros", href: "/about" },
+    { labelKey: "ia", href: "/ia" },
+    { labelKey: "cloud", href: "/cloud" },
+    { labelKey: "academy", href: "/academy" },
+    { labelKey: "media", href: "/media" },
+    { labelKey: "about", href: "/about" },
   ];
 
   return (
@@ -23,14 +26,14 @@ const Navbar = () => {
           <Logo />
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4">
             {navLinks.map((link) => (
               <Link
-                key={link.label}
+                key={link.labelKey}
                 to={link.href}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium"
               >
-                {link.label}
+                {t("nav", link.labelKey)}
               </Link>
             ))}
             
@@ -38,26 +41,34 @@ const Navbar = () => {
             <Link to="/aura">
               <Button variant="outline" size="sm" className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 gap-2">
                 <Sparkles className="w-4 h-4 text-secondary" />
-                Probá AURA
+                {t("nav", "tryAura")}
               </Button>
             </Link>
             
             {/* Get Started - External Link */}
             <a href="https://lsnetinformatica.com.ar" target="_blank" rel="noopener noreferrer">
               <Button variant="hero" size="sm">
-                Get Started
+                {t("nav", "getStarted")}
               </Button>
             </a>
+
+            {/* Language & Theme Selectors */}
+            <div className="ml-2 border-l border-border/50 pl-4">
+              <LanguageThemeSelector />
+            </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile: Theme/Lang + Menu Button */}
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageThemeSelector />
+            <button
+              className="text-foreground p-1"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -66,12 +77,12 @@ const Navbar = () => {
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
-                  key={link.label}
+                  key={link.labelKey}
                   to={link.href}
                   className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {link.label}
+                  {t("nav", link.labelKey)}
                 </Link>
               ))}
               
@@ -79,13 +90,13 @@ const Navbar = () => {
                 <Link to="/aura" onClick={() => setIsMenuOpen(false)}>
                   <Button variant="outline" size="sm" className="w-fit border-secondary/50 gap-2">
                     <Sparkles className="w-4 h-4 text-secondary" />
-                    Probá AURA
+                    {t("nav", "tryAura")}
                   </Button>
                 </Link>
                 
                 <a href="https://lsnetinformatica.com.ar" target="_blank" rel="noopener noreferrer">
                   <Button variant="hero" size="sm" className="w-fit">
-                    Get Started
+                    {t("nav", "getStarted")}
                   </Button>
                 </a>
               </div>

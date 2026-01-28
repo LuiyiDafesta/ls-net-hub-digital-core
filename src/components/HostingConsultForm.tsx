@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, Send, MessageSquare, Mail } from "lucide-react";
+import { MessageSquare, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,6 +14,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface HostingConsultFormProps {
   isOpen: boolean;
@@ -21,25 +22,9 @@ interface HostingConsultFormProps {
   selectedPlan?: string;
 }
 
-const projectTypes = [
-  { id: "website", label: "Sitio web / Landing page" },
-  { id: "ecommerce", label: "Tienda online / E-commerce" },
-  { id: "blog", label: "Blog / Portal de noticias" },
-  { id: "webapp", label: "Aplicación web" },
-  { id: "other", label: "Otro" },
-];
-
-const features = [
-  { id: "wordpress", label: "WordPress" },
-  { id: "ssl", label: "Certificado SSL" },
-  { id: "email", label: "Emails corporativos" },
-  { id: "domain", label: "Dominio personalizado" },
-  { id: "backups", label: "Backups automáticos" },
-  { id: "support", label: "Soporte prioritario" },
-];
-
 const HostingConsultForm = ({ isOpen, onClose, selectedPlan }: HostingConsultFormProps) => {
   const { toast } = useToast();
+  const { t, language } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -54,6 +39,23 @@ const HostingConsultForm = ({ isOpen, onClose, selectedPlan }: HostingConsultFor
     contactMethod: "whatsapp",
   });
 
+  const projectTypes = [
+    { id: "website", labelKey: "websiteLanding" },
+    { id: "ecommerce", labelKey: "ecommerce" },
+    { id: "blog", labelKey: "blogNews" },
+    { id: "webapp", labelKey: "webapp" },
+    { id: "other", labelKey: "other" },
+  ];
+
+  const features = [
+    { id: "wordpress", labelKey: "wordpress" },
+    { id: "ssl", labelKey: "sslCertificate" },
+    { id: "email", labelKey: "corporateEmails" },
+    { id: "domain", labelKey: "customDomain" },
+    { id: "backups", labelKey: "autoBackups" },
+    { id: "support", labelKey: "prioritySupport" },
+  ];
+
   const handleFeatureToggle = (featureId: string) => {
     setFormData((prev) => ({
       ...prev,
@@ -67,14 +69,14 @@ const HostingConsultForm = ({ isOpen, onClose, selectedPlan }: HostingConsultFor
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Build WhatsApp message
     const featuresText = formData.selectedFeatures
-      .map((f) => features.find((feat) => feat.id === f)?.label)
+      .map((f) => t("consultForm", features.find((feat) => feat.id === f)?.labelKey || f))
       .join(", ");
     
-    const projectTypeText = projectTypes.find((p) => p.id === formData.projectType)?.label || formData.projectType;
+    const projectTypeText = t("consultForm", projectTypes.find((p) => p.id === formData.projectType)?.labelKey || formData.projectType);
 
-    const message = `
+    const message = language === "es" 
+      ? `
 *Nueva consulta de Hosting*
 ${selectedPlan ? `Plan de interés: ${selectedPlan}` : ""}
 
@@ -93,33 +95,52 @@ ${formData.currentHosting ? `• Hosting actual: ${formData.currentHosting}` : "
 ${featuresText || "No especificadas"}
 
 ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInfo}` : ""}
-    `.trim();
+      `.trim()
+      : `
+*New Hosting Inquiry*
+${selectedPlan ? `Plan of interest: ${selectedPlan}` : ""}
+
+*Contact Information:*
+• Name: ${formData.name}
+• Email: ${formData.email}
+• Phone: ${formData.phone}
+${formData.company ? `• Company: ${formData.company}` : ""}
+
+*Project Details:*
+• Type: ${projectTypeText}
+• Number of sites: ${formData.websiteCount}
+${formData.currentHosting ? `• Current hosting: ${formData.currentHosting}` : "• New project (no previous hosting)"}
+
+*Required Features:*
+${featuresText || "Not specified"}
+
+${formData.additionalInfo ? `*Additional Information:*\n${formData.additionalInfo}` : ""}
+      `.trim();
 
     if (formData.contactMethod === "whatsapp") {
-      // Open WhatsApp with pre-filled message
       const whatsappUrl = `https://wa.me/5491160449717?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, "_blank");
       
       toast({
-        title: "¡Redirigiendo a WhatsApp!",
-        description: "Se abrirá una conversación con nuestro equipo.",
+        title: t("consultForm", "redirectingWhatsApp"),
+        description: t("consultForm", "whatsappConversation"),
       });
     } else {
-      // For email, show instructions (since we don't have backend yet)
-      const emailSubject = `Consulta Hosting${selectedPlan ? ` - ${selectedPlan}` : ""}`;
+      const emailSubject = language === "es" 
+        ? `Consulta Hosting${selectedPlan ? ` - ${selectedPlan}` : ""}`
+        : `Hosting Inquiry${selectedPlan ? ` - ${selectedPlan}` : ""}`;
       const mailtoUrl = `mailto:info@lsnethub.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(message)}`;
       window.open(mailtoUrl, "_blank");
       
       toast({
-        title: "¡Abriendo cliente de email!",
-        description: "Se abrirá tu aplicación de correo con los datos precargados.",
+        title: t("consultForm", "openingEmail"),
+        description: t("consultForm", "emailPreloaded"),
       });
     }
 
     setIsSubmitting(false);
     onClose();
     
-    // Reset form
     setFormData({
       name: "",
       email: "",
@@ -139,10 +160,10 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-card border-border">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-foreground">
-            {selectedPlan ? `Consulta: ${selectedPlan}` : "Solicitar Asesoramiento"}
+            {selectedPlan ? `${t("consultForm", "consultFor")} ${selectedPlan}` : t("consultForm", "title")}
           </DialogTitle>
           <DialogDescription className="text-muted-foreground">
-            Completá el formulario y un asesor se comunicará con vos para ofrecerte la mejor opción.
+            {t("consultForm", "description")}
           </DialogDescription>
         </DialogHeader>
 
@@ -150,23 +171,23 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
           {/* Contact Info */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
-              Datos de contacto
+              {t("consultForm", "contactData")}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="name">Nombre completo *</Label>
+                <Label htmlFor="name">{t("consultForm", "fullName")} *</Label>
                 <Input
                   id="name"
                   required
                   maxLength={100}
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Tu nombre"
+                  placeholder={language === "es" ? "Tu nombre" : "Your name"}
                   className="mt-1 bg-background"
                 />
               </div>
               <div>
-                <Label htmlFor="email">Email *</Label>
+                <Label htmlFor="email">{t("common", "email")} *</Label>
                 <Input
                   id="email"
                   type="email"
@@ -174,12 +195,12 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
                   maxLength={255}
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="tu@email.com"
+                  placeholder={language === "es" ? "tu@email.com" : "your@email.com"}
                   className="mt-1 bg-background"
                 />
               </div>
               <div>
-                <Label htmlFor="phone">Teléfono / WhatsApp *</Label>
+                <Label htmlFor="phone">{t("consultForm", "phoneWhatsApp")} *</Label>
                 <Input
                   id="phone"
                   type="tel"
@@ -192,13 +213,13 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
                 />
               </div>
               <div>
-                <Label htmlFor="company">Empresa (opcional)</Label>
+                <Label htmlFor="company">{t("common", "company")} ({t("common", "optional")})</Label>
                 <Input
                   id="company"
                   maxLength={100}
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  placeholder="Nombre de tu empresa"
+                  placeholder={language === "es" ? "Nombre de tu empresa" : "Your company name"}
                   className="mt-1 bg-background"
                 />
               </div>
@@ -208,7 +229,7 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
           {/* Project Type */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
-              Tipo de proyecto
+              {t("consultForm", "projectType")}
             </h3>
             <RadioGroup
               value={formData.projectType}
@@ -218,7 +239,7 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
               {projectTypes.map((type) => (
                 <div key={type.id} className="flex items-center space-x-2">
                   <RadioGroupItem value={type.id} id={type.id} />
-                  <Label htmlFor={type.id} className="cursor-pointer">{type.label}</Label>
+                  <Label htmlFor={type.id} className="cursor-pointer">{t("consultForm", type.labelKey)}</Label>
                 </div>
               ))}
             </RadioGroup>
@@ -226,7 +247,7 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
 
           {/* Website Count */}
           <div className="space-y-2">
-            <Label htmlFor="websiteCount">¿Cuántos sitios web necesitás alojar?</Label>
+            <Label htmlFor="websiteCount">{t("consultForm", "howManySites")}</Label>
             <Input
               id="websiteCount"
               type="number"
@@ -240,24 +261,24 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
 
           {/* Current Hosting */}
           <div className="space-y-2">
-            <Label htmlFor="currentHosting">¿Tenés hosting actualmente? (opcional)</Label>
+            <Label htmlFor="currentHosting">{t("consultForm", "currentHosting")} ({t("common", "optional")})</Label>
             <Input
               id="currentHosting"
               maxLength={100}
               value={formData.currentHosting}
               onChange={(e) => setFormData({ ...formData, currentHosting: e.target.value })}
-              placeholder="Ej: GoDaddy, HostGator, otro proveedor..."
+              placeholder={t("consultForm", "currentHostingPlaceholder")}
               className="bg-background"
             />
             <p className="text-xs text-muted-foreground">
-              Si ya tenés hosting, podemos ayudarte con la migración sin costo adicional.
+              {t("consultForm", "migrationNote")}
             </p>
           </div>
 
           {/* Features */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
-              ¿Qué funcionalidades necesitás?
+              {t("consultForm", "featuresNeeded")}
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {features.map((feature) => (
@@ -268,7 +289,7 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
                     onCheckedChange={() => handleFeatureToggle(feature.id)}
                   />
                   <Label htmlFor={feature.id} className="cursor-pointer text-sm">
-                    {feature.label}
+                    {t("consultForm", feature.labelKey)}
                   </Label>
                 </div>
               ))}
@@ -277,14 +298,14 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
 
           {/* Additional Info */}
           <div className="space-y-2">
-            <Label htmlFor="additionalInfo">¿Algo más que debamos saber? (opcional)</Label>
+            <Label htmlFor="additionalInfo">{t("consultForm", "anythingElse")} ({t("common", "optional")})</Label>
             <Textarea
               id="additionalInfo"
               maxLength={1000}
               rows={3}
               value={formData.additionalInfo}
               onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
-              placeholder="Contanos sobre tu proyecto, requerimientos especiales, fechas límite..."
+              placeholder={t("consultForm", "additionalPlaceholder")}
               className="bg-background resize-none"
             />
           </div>
@@ -292,7 +313,7 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
           {/* Contact Method */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
-              ¿Cómo preferís que te contactemos?
+              {t("consultForm", "preferredContact")}
             </h3>
             <RadioGroup
               value={formData.contactMethod}
@@ -303,7 +324,7 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
                 <RadioGroupItem value="whatsapp" id="whatsapp" />
                 <Label htmlFor="whatsapp" className="cursor-pointer flex items-center gap-2">
                   <MessageSquare className="w-5 h-5 text-success" />
-                  WhatsApp (respuesta rápida)
+                  {t("consultForm", "whatsappFast")}
                 </Label>
               </div>
               <div className="flex items-center space-x-2 p-4 rounded-xl border border-border bg-background hover:border-secondary/50 transition-colors cursor-pointer">
@@ -326,18 +347,18 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
               disabled={isSubmitting}
             >
               {isSubmitting ? (
-                "Enviando..."
+                t("common", "sending")
               ) : (
                 <>
                   {formData.contactMethod === "whatsapp" ? (
                     <>
                       <MessageSquare className="w-5 h-5" />
-                      Enviar por WhatsApp
+                      {t("consultForm", "sendViaWhatsApp")}
                     </>
                   ) : (
                     <>
                       <Mail className="w-5 h-5" />
-                      Enviar por Email
+                      {t("consultForm", "sendViaEmail")}
                     </>
                   )}
                 </>
@@ -349,7 +370,7 @@ ${formData.additionalInfo ? `*Información adicional:*\n${formData.additionalInf
               size="lg"
               onClick={onClose}
             >
-              Cancelar
+              {t("common", "cancel")}
             </Button>
           </div>
         </form>

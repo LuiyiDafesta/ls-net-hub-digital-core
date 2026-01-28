@@ -6,33 +6,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const contactMethods = [
-  {
-    icon: Mail,
-    title: "Email",
-    value: "info@lsnethub.com",
-    description: "Te respondemos en menos de 24hs",
-    href: "mailto:info@lsnethub.com",
-  },
-  {
-    icon: Phone,
-    title: "WhatsApp",
-    value: "+54 9 11 6044-9717",
-    description: "Lunes a Viernes, 9:00 - 18:00",
-    href: "https://wa.me/5491160449717",
-  },
-  {
-    icon: MapPin,
-    title: "Ubicación",
-    value: "Buenos Aires, Argentina",
-    description: "Operamos de forma remota en LATAM, USA y Europa",
-    href: null,
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactPage = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,16 +20,39 @@ const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const contactMethods = [
+    {
+      icon: Mail,
+      titleKey: "emailTitle",
+      value: "info@lsnethub.com",
+      descKey: "emailDesc",
+      href: "mailto:info@lsnethub.com",
+    },
+    {
+      icon: Phone,
+      titleKey: "whatsappTitle",
+      value: "+54 9 11 6044-9717",
+      descKey: "whatsappDesc",
+      href: "https://wa.me/5491160449717",
+    },
+    {
+      icon: MapPin,
+      titleKey: "locationTitle",
+      valueKey: "locationValue",
+      descKey: "locationDesc",
+      href: null,
+    },
+  ];
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     toast({
-      title: "¡Mensaje enviado!",
-      description: "Nos pondremos en contacto contigo pronto.",
+      title: t("contact", "messageSent"),
+      description: t("contact", "messageSentDesc"),
     });
     
     setFormData({ name: "", email: "", company: "", subject: "", message: "" });
@@ -72,19 +73,19 @@ const ContactPage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-6 animate-fade-in-up opacity-0">
-              Contacto
+              {t("contact", "heroTag")}
             </span>
             
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 animate-fade-in-up opacity-0 animation-delay-200">
-              <span className="text-foreground">Hablemos de tu</span>
+              <span className="text-foreground">{t("contact", "heroTitle1")}</span>
               <br />
               <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">
-                próximo proyecto
+                {t("contact", "heroTitle2")}
               </span>
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in-up opacity-0 animation-delay-400">
-              ¿Tenés una idea en mente? Contanos cómo podemos ayudarte a transformar tu negocio con tecnología.
+              {t("contact", "heroDescription")}
             </p>
           </div>
         </div>
@@ -101,16 +102,18 @@ const ContactPage = () => {
                     <method.icon className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">{method.title}</h3>
-                    <p className="text-foreground font-medium">{method.value}</p>
-                    <p className="text-sm text-muted-foreground mt-1">{method.description}</p>
+                    <h3 className="font-semibold text-foreground mb-1">{t("contact", method.titleKey)}</h3>
+                    <p className="text-foreground font-medium">
+                      {method.valueKey ? t("contact", method.valueKey) : method.value}
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-1">{t("contact", method.descKey)}</p>
                   </div>
                 </>
               );
               
               return method.href ? (
                 <a
-                  key={method.title}
+                  key={method.titleKey}
                   href={method.href}
                   target={method.href.startsWith("http") ? "_blank" : undefined}
                   rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
@@ -119,7 +122,7 @@ const ContactPage = () => {
                   {content}
                 </a>
               ) : (
-                <div key={method.title} className="flex items-start gap-4 p-6 rounded-xl bg-card/50 border border-border/50">
+                <div key={method.titleKey} className="flex items-start gap-4 p-6 rounded-xl bg-card/50 border border-border/50">
                   {content}
                 </div>
               );
@@ -137,14 +140,13 @@ const ContactPage = () => {
             {/* Left Column - Info */}
             <div>
               <span className="text-sm font-semibold text-secondary uppercase tracking-widest">
-                ¿Por qué elegirnos?
+                {t("contact", "whyChooseUs")}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4 mb-6">
-                Somos tu socio tecnológico
+                {t("contact", "techPartner")}
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                En LS NET HUB combinamos experiencia técnica con una visión práctica de los negocios. 
-                No vendemos humo: entregamos soluciones que funcionan.
+                {t("contact", "partnerDesc")}
               </p>
               
               <div className="space-y-6">
@@ -153,8 +155,8 @@ const ContactPage = () => {
                     <MessageSquare className="w-5 h-5 text-secondary" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground mb-1">Respuesta rápida</h4>
-                    <p className="text-sm text-muted-foreground">Te respondemos en menos de 24 horas hábiles.</p>
+                    <h4 className="font-medium text-foreground mb-1">{t("contact", "fastResponse")}</h4>
+                    <p className="text-sm text-muted-foreground">{t("contact", "fastResponseDesc")}</p>
                   </div>
                 </div>
                 
@@ -163,8 +165,8 @@ const ContactPage = () => {
                     <Clock className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground mb-1">Consulta sin compromiso</h4>
-                    <p className="text-sm text-muted-foreground">La primera llamada es gratis. Evaluamos tu caso y te damos un presupuesto claro.</p>
+                    <h4 className="font-medium text-foreground mb-1">{t("contact", "freeConsult")}</h4>
+                    <p className="text-sm text-muted-foreground">{t("contact", "freeConsultDesc")}</p>
                   </div>
                 </div>
               </div>
@@ -176,7 +178,7 @@ const ContactPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                      Tu Nombre *
+                      {t("contact", "yourName")} *
                     </label>
                     <Input
                       id="name"
@@ -191,7 +193,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                      Email *
+                      {t("contact", "yourEmail")} *
                     </label>
                     <Input
                       id="email"
@@ -209,7 +211,7 @@ const ContactPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
-                      Empresa
+                      {t("contact", "yourCompany")}
                     </label>
                     <Input
                       id="company"
@@ -223,7 +225,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                      Asunto *
+                      {t("common", "subject")} *
                     </label>
                     <Input
                       id="subject"
@@ -232,7 +234,7 @@ const ContactPage = () => {
                       maxLength={150}
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      placeholder="¿En qué podemos ayudarte?"
+                      placeholder={t("contact", "subjectPlaceholder")}
                       className="bg-background"
                     />
                   </div>
@@ -240,7 +242,7 @@ const ContactPage = () => {
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Mensaje *
+                    {t("common", "message")} *
                   </label>
                   <Textarea
                     id="message"
@@ -249,7 +251,7 @@ const ContactPage = () => {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Contanos sobre tu proyecto o consulta..."
+                    placeholder={t("contact", "messagePlaceholder")}
                     className="bg-background resize-none"
                   />
                 </div>
@@ -262,18 +264,18 @@ const ContactPage = () => {
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    "Enviando..."
+                    t("common", "sending")
                   ) : (
                     <>
-                      Enviar Mensaje
+                      {t("common", "sendMessage")}
                       <Send className="w-5 h-5" />
                     </>
                   )}
                 </Button>
                 
                 <p className="text-xs text-muted-foreground text-center">
-                  Al enviar este formulario, aceptás nuestra{" "}
-                  <a href="/privacy" className="text-secondary hover:underline">política de privacidad</a>.
+                  {t("contact", "privacyNotice")}{" "}
+                  <a href="/privacy" className="text-secondary hover:underline">{t("footer", "privacyPolicy")}</a>.
                 </p>
               </form>
             </div>
