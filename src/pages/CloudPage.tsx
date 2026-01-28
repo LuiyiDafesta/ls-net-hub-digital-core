@@ -1,7 +1,9 @@
-import { Server, Shield, Zap, Globe, Clock, HardDrive, Activity, CheckCircle, ExternalLink, Lock } from "lucide-react";
+import { useState } from "react";
+import { Server, Shield, Zap, Globe, Clock, HardDrive, Activity, CheckCircle, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HostingConsultForm from "@/components/HostingConsultForm";
 
 const hostingPlans = [
   {
@@ -104,6 +106,14 @@ const guarantees = [
 ];
 
 const CloudPage = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<string | undefined>();
+
+  const handleConsultClick = (planName?: string) => {
+    setSelectedPlan(planName);
+    setIsFormOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -212,25 +222,25 @@ const CloudPage = () => {
                   ))}
                 </ul>
                 
-                <a 
-                  href="https://lsnetinformatica.com.ar" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                <Button 
+                  variant={plan.popular ? "hero" : "outline"} 
+                  className="w-full"
+                  onClick={() => handleConsultClick(plan.name)}
                 >
-                  <Button 
-                    variant={plan.popular ? "hero" : "outline"} 
-                    className="w-full"
-                  >
-                    Contratar Ahora
-                    <ExternalLink className="w-4 h-4" />
-                  </Button>
-                </a>
+                  Consultar
+                </Button>
               </div>
             ))}
           </div>
           
           <p className="text-center text-muted-foreground text-sm mt-8">
-            ¿Necesitás una configuración especial? <a href="/contact" className="text-secondary hover:underline">Contactá a nuestro equipo</a>
+            ¿Necesitás una configuración especial?{" "}
+            <button 
+              onClick={() => handleConsultClick()} 
+              className="text-secondary hover:underline"
+            >
+              Contactá a nuestro equipo
+            </button>
           </p>
         </div>
       </section>
@@ -286,16 +296,14 @@ const CloudPage = () => {
               Migración sin downtime desde otros proveedores.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a 
-                href="https://lsnetinformatica.com.ar" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <Button 
+                variant="hero" 
+                size="xl"
+                onClick={() => handleConsultClick()}
               >
-                <Button variant="hero" size="xl">
-                  Ver Planes
-                  <Zap className="w-5 h-5" />
-                </Button>
-              </a>
+                Solicitar Asesoramiento
+                <Zap className="w-5 h-5" />
+              </Button>
               <a href="/contact">
                 <Button variant="outline" size="xl">
                   Contactar Ventas
@@ -305,6 +313,13 @@ const CloudPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Consult Form Modal */}
+      <HostingConsultForm 
+        isOpen={isFormOpen} 
+        onClose={() => setIsFormOpen(false)} 
+        selectedPlan={selectedPlan}
+      />
 
       <Footer />
     </div>
