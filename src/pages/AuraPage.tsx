@@ -1,77 +1,108 @@
-import { ArrowRight, Clock, Zap, Database, MessageSquare, UserCheck, Link2, Brain, Rocket, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, FileText, Globe, MessageSquare, CreditCard, Shield, Clock, TrendingUp, Users, Zap, Languages, BarChart3, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const DEMO_URL = "https://aura-demo.lsnethub.com"; // Replace with actual subdomain
+const DEMO_URL = "https://lsnetinformatica.com.ar/agentes/login";
+const REGISTER_URL = "https://lsnetinformatica.com.ar/agentes/register";
 
 const AuraPage = () => {
-  const valueProps = [
+  const stats = [
+    { value: "10K+", label: "Agentes Activos" },
+    { value: "50M+", label: "Mensajes" },
+    { value: "99.9%", label: "Uptime" },
+    { value: "2,500+", label: "Clientes Felices" },
+  ];
+
+  const features = [
     {
-      icon: Clock,
-      title: "Always-On Availability",
-      description: "Zero downtime. AURA agents handle inquiries at 3 AM with the same precision as 3 PM.",
+      icon: Bot,
+      title: "Agentes con IA",
+      description: "Crea agentes conversacionales inteligentes entrenados con tus propios datos.",
       color: "text-secondary",
       glow: "shadow-[0_0_30px_hsla(211,100%,50%,0.3)]",
     },
     {
-      icon: Zap,
-      title: "Instant Scalability",
-      description: "Handle spikes in demand without hiring. From 10 to 10,000 concurrent conversations instantly.",
+      icon: FileText,
+      title: "Entrenamiento con Docs",
+      description: "Sube PDFs, documentos y URLs para construir tu base de conocimientos.",
       color: "text-primary",
       glow: "shadow-[0_0_30px_hsla(0,100%,60%,0.3)]",
     },
     {
-      icon: Database,
-      title: "Custom Knowledge Base",
-      description: "Trained securely on your documents, website, and CRM data. They speak your business language.",
+      icon: Globe,
+      title: "Widget Web",
+      description: "Inserta un chat personalizable en cualquier sitio web.",
       color: "text-success",
       glow: "shadow-[0_0_30px_hsla(134,61%,41%,0.3)]",
     },
-  ];
-
-  const useCases = [
     {
-      name: "Marcos",
-      role: "IT Support Level 1",
-      description: "Resolves password resets and common technical issues automatically. Escalates complex problems to human agents with full context.",
-      icon: "🛠️",
-      gradient: "from-secondary/20 to-secondary/5",
-      borderColor: "border-secondary/30",
+      icon: MessageSquare,
+      title: "Integración WhatsApp",
+      description: "Conecta tus agentes a WhatsApp para soporte móvil directo.",
+      color: "text-warning",
+      glow: "shadow-[0_0_30px_hsla(45,100%,51%,0.3)]",
     },
     {
-      name: "Sofia",
-      role: "Sales Development",
-      description: "Qualifies incoming leads 24/7 and schedules meetings for your human team. Never misses a potential customer.",
-      icon: "💼",
-      gradient: "from-success/20 to-success/5",
-      borderColor: "border-success/30",
-    },
-  ];
-
-  const processSteps = [
-    {
-      step: 1,
-      title: "Connect",
-      description: "We integrate AURA with your data sources (Notion, PDFs, Websites, databases).",
-      icon: Link2,
+      icon: CreditCard,
+      title: "Uso por Créditos",
+      description: "Paga solo por lo que usas con precios transparentes y sin sorpresas.",
       color: "text-secondary",
+      glow: "shadow-[0_0_30px_hsla(211,100%,50%,0.3)]",
     },
     {
-      step: 2,
-      title: "Train",
-      description: "Our engineers fine-tune the models for accuracy and tone matching your brand.",
-      icon: Brain,
+      icon: Shield,
+      title: "Seguridad Empresarial",
+      description: "Cumplimiento SOC 2 con encriptación de extremo a extremo.",
       color: "text-primary",
+      glow: "shadow-[0_0_30px_hsla(0,100%,60%,0.3)]",
+    },
+  ];
+
+  const benefits = [
+    { icon: Clock, text: "Soporte al cliente automatizado 24/7" },
+    { icon: TrendingUp, text: "Reduce tiempos de respuesta en un 80%" },
+    { icon: Users, text: "Escala sin contratar más personal" },
+    { icon: Zap, text: "Captura y califica leads automáticamente" },
+    { icon: Languages, text: "Soporte multilingüe inmediato" },
+    { icon: BarChart3, text: "Análisis detallados y métricas" },
+  ];
+
+  const pricingPlans = [
+    {
+      name: "Starter",
+      price: "$0",
+      period: "/mes",
+      description: "Perfecto para probar y proyectos personales.",
+      features: ["1 Agente IA", "50 Créditos/mes", "RAG Limitado"],
+      cta: "Comenzar",
+      popular: false,
     },
     {
-      step: 3,
-      title: "Deploy",
-      description: "Embed your AURA agents on your site, WhatsApp, or Slack instantly.",
-      icon: Rocket,
-      color: "text-success",
+      name: "Professional",
+      price: "$25",
+      period: "/mes",
+      description: "Para creadores serios y crecimiento.",
+      features: ["3 Agentes IA", "500 Créditos/mes", "RAG Completo", "Soporte por Email"],
+      cta: "Prueba Gratuita",
+      popular: true,
     },
+    {
+      name: "Business",
+      price: "$75",
+      period: "/mes",
+      description: "Para agencias y empresas medianas.",
+      features: ["5 Agentes IA", "2,000 Créditos/mes", "Soporte Prioritario", "Acceso a API"],
+      cta: "Comenzar Ahora",
+      popular: false,
+    },
+  ];
+
+  const creditPacks = [
+    { credits: "500", name: "Paquete Básico", price: "$25" },
+    { credits: "2,000", name: "Paquete Pro", price: "$60", popular: true },
+    { credits: "5,000", name: "Paquete Enterprise", price: "$130" },
   ];
 
   return (
@@ -94,91 +125,56 @@ const AuraPage = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 border border-border/50 backdrop-blur-sm mb-8 animate-fade-in-up opacity-0">
               <Sparkles className="w-4 h-4 text-warning" />
-              <span className="text-sm text-muted-foreground">Introducing AURA by LS NET HUB</span>
+              <span className="text-sm text-muted-foreground">🚀 Nuevo soporte para GPT-4 y Claude</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 animate-fade-in-up opacity-0 animation-delay-200">
-              <span className="text-foreground">Deploy Your</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 animate-fade-in-up opacity-0 animation-delay-200">
+              <span className="text-foreground">Construye Agentes IA Que</span>
               <br />
               <span className="relative inline-block mt-2">
                 <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">
-                  24/7 Digital Workforce
+                  Realmente Entiendan Tu Negocio
                 </span>
               </span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in-up opacity-0 animation-delay-400">
-              AURA is the suite of intelligent AI agents trained on your business data to automate support, sales, and internal operations instantly.
+            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed animate-fade-in-up opacity-0 animation-delay-400">
+              Crea agentes conversacionales entrenados con tus documentos. Despliega en web, WhatsApp y más en minutos.
             </p>
 
-            {/* CTA Button */}
-            <div className="animate-fade-in-up opacity-0 animation-delay-600">
-              <a href={DEMO_URL} target="_blank" rel="noopener noreferrer">
-                <Button 
-                  variant="gradient" 
-                  size="xl" 
-                  className="group relative overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Launch Interactive Demo
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 animate-fade-in-up opacity-0 animation-delay-600">
+              <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
+                <Button variant="gradient" size="xl" className="group">
+                  <span className="flex items-center gap-2">
+                    Prueba Gratuita
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
               </a>
+              <a href={DEMO_URL} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="xl">
+                  Ver Demo
+                </Button>
+              </a>
             </div>
-          </div>
 
-          {/* Hero Visual - AURA Interface Mockup */}
-          <div className="mt-20 max-w-4xl mx-auto animate-fade-in-up opacity-0 animation-delay-600">
-            <div className="relative">
-              {/* Glow Effect Behind */}
-              <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 via-primary/20 to-success/20 blur-3xl opacity-50" />
-              
-              {/* Glass Panel */}
-              <div className="relative bg-card/30 backdrop-blur-xl border border-border/30 rounded-2xl p-8 shadow-2xl">
-                {/* Top Bar */}
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-3 h-3 rounded-full bg-primary/80" />
-                  <div className="w-3 h-3 rounded-full bg-warning/80" />
-                  <div className="w-3 h-3 rounded-full bg-success/80" />
-                  <span className="ml-4 text-sm text-muted-foreground font-mono">aura.lsnethub.com</span>
-                </div>
+            <p className="text-sm text-muted-foreground animate-fade-in-up opacity-0 animation-delay-600">
+              Sin tarjeta de crédito • 50 créditos gratis
+            </p>
 
-                {/* Agent Cards */}
-                <div className="grid md:grid-cols-3 gap-4">
-                  {["Ana", "Marcos", "Sofia"].map((name, i) => (
-                    <div 
-                      key={name}
-                      className={`relative p-6 rounded-xl bg-gradient-to-br ${
-                        i === 0 ? "from-secondary/10 to-secondary/5 border-secondary/20" :
-                        i === 1 ? "from-primary/10 to-primary/5 border-primary/20" :
-                        "from-success/10 to-success/5 border-success/20"
-                      } border backdrop-blur-sm`}
-                    >
-                      {/* Status Indicator */}
-                      <div className="absolute top-4 right-4">
-                        <div className={`w-2 h-2 rounded-full ${
-                          i === 0 ? "bg-secondary" : i === 1 ? "bg-primary" : "bg-success"
-                        } animate-pulse`} />
-                      </div>
-                      
-                      <div className="text-3xl mb-3">
-                        {i === 0 ? "👩‍💼" : i === 1 ? "🛠️" : "💼"}
-                      </div>
-                      <h3 className="font-semibold text-foreground mb-1">{name}</h3>
-                      <p className="text-xs text-muted-foreground">
-                        {i === 0 ? "Customer Success" : i === 1 ? "IT Support" : "Sales Dev"}
-                      </p>
-                      <div className="mt-3 text-xs text-success flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-success" />
-                        Online
-                      </div>
-                    </div>
-                  ))}
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 animate-fade-in-up opacity-0 animation-delay-600">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -187,32 +183,30 @@ const AuraPage = () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
 
-      {/* Value Proposition Section */}
+      {/* Features Section */}
       <section className="py-24 relative">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              <span className="text-foreground">Why </span>
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">AURA</span>
-              <span className="text-foreground">?</span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Todo lo que necesitas para crear Agentes IA
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              The invisible intelligence powering your business around the clock.
+              Una plataforma completa para crear, entrenar y desplegar IA conversacional.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {valueProps.map((prop, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {features.map((feature, index) => (
               <Card 
                 key={index}
-                className={`bg-card/50 border-border/50 backdrop-blur-sm hover:${prop.glow} transition-all duration-500 hover:-translate-y-2`}
+                className={`bg-card/50 border-border/50 backdrop-blur-sm hover:${feature.glow} transition-all duration-500 hover:-translate-y-2`}
               >
                 <CardContent className="p-8">
-                  <div className={`w-14 h-14 rounded-xl bg-card flex items-center justify-center mb-6 ${prop.glow}`}>
-                    <prop.icon className={`w-7 h-7 ${prop.color}`} />
+                  <div className={`w-14 h-14 rounded-xl bg-card flex items-center justify-center mb-6 ${feature.glow}`}>
+                    <feature.icon className={`w-7 h-7 ${feature.color}`} />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">{prop.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{prop.description}</p>
+                  <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -220,98 +214,123 @@ const AuraPage = () => {
         </div>
       </section>
 
-      {/* Use Cases Section */}
+      {/* Pricing Section */}
       <section className="py-24 relative bg-card/30">
         <div className="absolute inset-0 grid-background opacity-10" />
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
-              How businesses use AURA
+              Precios Simples y Transparentes
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Meet the agents that never sleep, never forget, and always deliver.
+              Comienza gratis, paga a medida que creces.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {useCases.map((useCase, index) => (
-              <div 
+          {/* Pricing Cards */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+            {pricingPlans.map((plan, index) => (
+              <Card 
                 key={index}
-                className={`relative p-8 rounded-2xl bg-gradient-to-br ${useCase.gradient} border ${useCase.borderColor} backdrop-blur-sm`}
+                className={`relative bg-card/50 border-border/50 backdrop-blur-sm ${
+                  plan.popular ? "border-secondary shadow-[0_0_40px_hsla(211,100%,50%,0.2)]" : ""
+                }`}
               >
-                <div className="flex items-start gap-4 mb-6">
-                  <span className="text-4xl">{useCase.icon}</span>
-                  <div>
-                    <h3 className="text-2xl font-bold text-foreground">Meet {useCase.name}</h3>
-                    <p className={`text-sm ${index === 0 ? "text-secondary" : "text-success"} font-medium`}>
-                      {useCase.role}
-                    </p>
+                {plan.popular && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="bg-secondary text-secondary-foreground text-xs font-semibold px-3 py-1 rounded-full">
+                      POPULAR
+                    </span>
+                  </div>
+                )}
+                <CardHeader className="text-center pb-2">
+                  <CardTitle className="text-xl">{plan.name}</CardTitle>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold text-foreground">{plan.price}</span>
+                    <span className="text-muted-foreground">{plan.period}</span>
+                  </div>
+                  <CardDescription className="mt-2">{plan.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="pt-4">
+                  <ul className="space-y-3 mb-6">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="w-1.5 h-1.5 rounded-full bg-success" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" className="block">
+                    <Button 
+                      variant={plan.popular ? "hero" : "outline"} 
+                      className="w-full"
+                    >
+                      {plan.cta}
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Credit Packs */}
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-xl font-semibold text-center mb-8 text-foreground">
+              Paquetes de Créditos Adicionales
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {creditPacks.map((pack, index) => (
+                <div 
+                  key={index}
+                  className={`relative p-6 rounded-xl bg-card/50 border border-border/50 text-center ${
+                    pack.popular ? "border-warning/50" : ""
+                  }`}
+                >
+                  {pack.popular && (
+                    <span className="absolute -top-2 right-4 bg-warning text-warning-foreground text-xs font-semibold px-2 py-0.5 rounded">
+                      Más vendido
+                    </span>
+                  )}
+                  <div className="text-2xl font-bold text-foreground mb-1">{pack.credits} Créditos</div>
+                  <div className="text-sm text-muted-foreground mb-3">{pack.name}</div>
+                  <div className="text-3xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                    {pack.price}
                   </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed text-lg">
-                  {useCase.description}
-                </p>
-                
-                {/* Decorative Element */}
-                <div className={`absolute bottom-4 right-4 w-20 h-20 rounded-full ${
-                  index === 0 ? "bg-secondary/10" : "bg-success/10"
-                } blur-2xl`} />
-              </div>
-            ))}
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground text-center mt-4">
+              * Los paquetes de créditos requieren una suscripción Professional o Business activa.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
+      {/* Benefits Section */}
       <section className="py-24 relative">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
-              How it Works
+              Transforma la Experiencia de tus Clientes
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              From zero to AI-powered in three simple steps.
+              Únete a miles de negocios que usan agentes IA para brindar soporte instantáneo y personalizado a escala.
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            {/* Desktop: Horizontal Layout */}
-            <div className="hidden md:flex items-start justify-between relative">
-              {/* Connecting Line */}
-              <div className="absolute top-12 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-secondary via-primary to-success" />
-              
-              {processSteps.map((step, index) => (
-                <div key={index} className="flex flex-col items-center text-center w-1/3 relative z-10">
-                  <div className={`w-24 h-24 rounded-2xl bg-card border border-border flex items-center justify-center mb-6 shadow-lg ${
-                    index === 0 ? "shadow-secondary/20" : index === 1 ? "shadow-primary/20" : "shadow-success/20"
-                  }`}>
-                    <step.icon className={`w-10 h-10 ${step.color}`} />
-                  </div>
-                  <div className={`text-sm font-bold ${step.color} mb-2`}>Step {step.step}</div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm max-w-[250px]">{step.description}</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {benefits.map((benefit, index) => (
+              <div 
+                key={index}
+                className="flex items-center gap-4 p-5 rounded-xl bg-card/30 border border-border/30 hover:border-secondary/30 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
+                  <benefit.icon className="w-5 h-5 text-secondary" />
                 </div>
-              ))}
-            </div>
-
-            {/* Mobile: Vertical Layout */}
-            <div className="md:hidden space-y-8">
-              {processSteps.map((step, index) => (
-                <div key={index} className="flex gap-6 items-start">
-                  <div className={`w-16 h-16 rounded-xl bg-card border border-border flex-shrink-0 flex items-center justify-center shadow-lg ${
-                    index === 0 ? "shadow-secondary/20" : index === 1 ? "shadow-primary/20" : "shadow-success/20"
-                  }`}>
-                    <step.icon className={`w-8 h-8 ${step.color}`} />
-                  </div>
-                  <div>
-                    <div className={`text-sm font-bold ${step.color} mb-1`}>Step {step.step}</div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
-                    <p className="text-muted-foreground text-sm">{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                <span className="text-foreground">{benefit.text}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -325,32 +344,27 @@ const AuraPage = () => {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-6xl font-bold mb-8">
-              <span className="text-foreground">Ready to upgrade your team with </span>
-              <span className="bg-gradient-to-r from-secondary via-primary to-success bg-clip-text text-transparent">AI</span>
-              <span className="text-foreground">?</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">
+              ¿Listo para crear tu primer Agente IA?
             </h2>
             
             <p className="text-xl text-muted-foreground mb-12">
-              See the difference intelligent automation makes. Try the live environment now.
+              Comienza gratis y despliega tu primer agente conversacional en menos de 5 minutos.
             </p>
 
             <div className="flex flex-col items-center gap-6">
-              <a href={DEMO_URL} target="_blank" rel="noopener noreferrer">
+              <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
                 <Button variant="gradient" size="xl" className="group">
                   <span className="flex items-center gap-2">
-                    Launch AURA Live Demo
+                    Comenzar Gratis
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
               </a>
               
-              <a 
-                href="#contact" 
-                className="text-muted-foreground hover:text-foreground transition-colors text-sm underline underline-offset-4"
-              >
-                Or contact sales for custom pricing
-              </a>
+              <p className="text-sm text-muted-foreground">
+                Sin tarjeta de crédito • 50 créditos gratis
+              </p>
             </div>
           </div>
         </div>
