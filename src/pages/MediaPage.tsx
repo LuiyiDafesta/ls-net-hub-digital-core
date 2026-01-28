@@ -61,7 +61,7 @@ const latestVideos = [
 ];
 
 const stats = [
-  { icon: Users, value: "5K+", label: "Suscriptores" },
+  { icon: Users, value: "2K+", label: "Suscriptores" },
   { icon: Video, value: "50+", label: "Videos" },
   { icon: Eye, value: "100K+", label: "Visualizaciones" },
   { icon: TrendingUp, value: "Semanal", label: "Contenido Nuevo" },
@@ -347,7 +347,7 @@ const MediaPage = () => {
               </a>
               
               <p className="text-sm text-muted-foreground mt-6">
-                +5,000 suscriptores ya están aprendiendo con nosotros
+                +2,000 suscriptores ya están aprendiendo con nosotros
               </p>
             </div>
           </div>
