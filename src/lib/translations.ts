@@ -1,0 +1,286 @@
+export type Language = "es" | "en";
+
+export const translations = {
+  // Navigation
+  nav: {
+    ia: { es: "IA", en: "AI" },
+    cloud: { es: "Cloud", en: "Cloud" },
+    academy: { es: "Academy", en: "Academy" },
+    media: { es: "Media", en: "Media" },
+    about: { es: "Nosotros", en: "About" },
+    tryAura: { es: "Probá AURA", en: "Try AURA" },
+    getStarted: { es: "Comenzar", en: "Get Started" },
+  },
+
+  // Common
+  common: {
+    learnMore: { es: "Saber más", en: "Learn more" },
+    contactUs: { es: "Contactanos", en: "Contact us" },
+    contactSales: { es: "Contactar Ventas", en: "Contact Sales" },
+    sendMessage: { es: "Enviar Mensaje", en: "Send Message" },
+    sending: { es: "Enviando...", en: "Sending..." },
+    cancel: { es: "Cancelar", en: "Cancel" },
+    year: { es: "año", en: "year" },
+    month: { es: "mes", en: "month" },
+    from: { es: "Desde", en: "From" },
+    mostPopular: { es: "Más Popular", en: "Most Popular" },
+    name: { es: "Nombre", en: "Name" },
+    email: { es: "Email", en: "Email" },
+    phone: { es: "Teléfono", en: "Phone" },
+    company: { es: "Empresa", en: "Company" },
+    subject: { es: "Asunto", en: "Subject" },
+    message: { es: "Mensaje", en: "Message" },
+    optional: { es: "opcional", en: "optional" },
+    required: { es: "requerido", en: "required" },
+  },
+
+  // Footer
+  footer: {
+    privacyPolicy: { es: "Política de Privacidad", en: "Privacy Policy" },
+    termsOfService: { es: "Términos de Servicio", en: "Terms of Service" },
+    contact: { es: "Contacto", en: "Contact" },
+    allRightsReserved: { es: "Todos los derechos reservados", en: "All rights reserved" },
+    localSupport: { es: "🇦🇷 ¿Soporte IT local en Argentina?", en: "🇦🇷 Local IT support in Argentina?" },
+  },
+
+  // Home Page
+  home: {
+    heroTag: { es: "Ecosistema de Tecnología Aplicada", en: "Applied Technology Ecosystem" },
+    heroTitle1: { es: "Transformamos ideas", en: "We transform ideas" },
+    heroTitle2: { es: "en soluciones digitales.", en: "into digital solutions." },
+    heroDescription: { 
+      es: "Automatización inteligente, infraestructura cloud y formación especializada para impulsar tu negocio al siguiente nivel.", 
+      en: "Intelligent automation, cloud infrastructure and specialized training to take your business to the next level." 
+    },
+    exploreDivisions: { es: "Explorá nuestras divisiones", en: "Explore our divisions" },
+  },
+
+  // Cloud Page
+  cloud: {
+    heroTag: { es: "Infraestructura Cloud", en: "Cloud Infrastructure" },
+    heroTitle1: { es: "Hosting & Cloud", en: "Hosting & Cloud" },
+    heroTitle2: { es: "para tu negocio.", en: "for your business." },
+    heroDescription: { 
+      es: "Soluciones de alojamiento seguras, rápidas y escalables con SLA 99.9% y soporte 24/7.", 
+      en: "Secure, fast and scalable hosting solutions with 99.9% SLA and 24/7 support." 
+    },
+    plansTitle: { es: "Elegí tu plan", en: "Choose your plan" },
+    plansSubtitle: { 
+      es: "Todos los planes incluyen panel de control, soporte 24/7, backup automático y migración sin downtime.", 
+      en: "All plans include control panel, 24/7 support, automatic backup and zero-downtime migration." 
+    },
+    consult: { es: "Consultar", en: "Inquire" },
+    customConfig: { es: "¿Necesitás una configuración especial?", en: "Need a custom configuration?" },
+    contactTeam: { es: "Contactá a nuestro equipo", en: "Contact our team" },
+    additionalServices: { es: "Servicios Adicionales", en: "Additional Services" },
+    completeStack: { es: "Completá tu stack", en: "Complete your stack" },
+    readyToStart: { es: "¿Listo para empezar?", en: "Ready to get started?" },
+    ctaDescription: { 
+      es: "Desplegá tu infraestructura en minutos con nuestro aprovisionamiento automático. Migración sin downtime desde otros proveedores.", 
+      en: "Deploy your infrastructure in minutes with our automated provisioning. Zero-downtime migration from other providers." 
+    },
+    requestAdvice: { es: "Solicitar Asesoramiento", en: "Request Consultation" },
+    // Guarantees
+    uptimeSLA: { es: "Uptime SLA", en: "Uptime SLA" },
+    guaranteedAvailability: { es: "Disponibilidad garantizada", en: "Guaranteed availability" },
+    ssdStorage: { es: "Almacenamiento SSD", en: "SSD Storage" },
+    ultraFastIO: { es: "I/O ultra rápido", en: "Ultra-fast disk I/O" },
+    monitoring: { es: "Monitoreo", en: "Monitoring" },
+    proactiveMonitoring: { es: "Monitoreo proactivo de infraestructura", en: "Proactive infrastructure monitoring" },
+    protection: { es: "Protección", en: "Protection" },
+    enterpriseSecurity: { es: "Seguridad de nivel empresarial", en: "Enterprise-grade security" },
+    // Plans
+    planBasic: { es: "Hosting Básico", en: "Basic Hosting" },
+    planBasicDesc: { es: "Ideal para emprendedores y pequeños negocios", en: "Ideal for entrepreneurs and small businesses" },
+    planWordPress: { es: "Hosting + WordPress", en: "Hosting + WordPress" },
+    planWordPressDesc: { es: "Nuestro producto estrella, listo para usar", en: "Our flagship product, ready to use" },
+    planPremium: { es: "Premium Full", en: "Premium Full" },
+    planPremiumDesc: { es: "Todo incluido para desarrolladores profesionales", en: "All-inclusive for professional developers" },
+    // Features
+    unlimitedEmail: { es: "Casillas de email ilimitadas", en: "Unlimited email accounts" },
+    webmailPOPIMAP: { es: "Webmail, POP, IMAP", en: "Webmail, POP, IMAP" },
+    controlPanel: { es: "Panel de control intuitivo", en: "Intuitive control panel" },
+    support247: { es: "Soporte técnico 24/7", en: "24/7 technical support" },
+    autoBackup: { es: "Backup automático", en: "Automatic backup" },
+    wpPreinstalled: { es: "WordPress preinstalado", en: "WordPress pre-installed" },
+    sslIncluded: { es: "Certificado SSL incluido", en: "SSL certificate included" },
+    domainIncluded: { es: "Dominio personalizado incluido", en: "Custom domain included" },
+    wpBricks: { es: "WordPress + Bricks Builder", en: "WordPress + Bricks Builder" },
+    premiumLicenses: { es: "Licencias premium ilimitadas", en: "Unlimited premium licenses" },
+    coreFramework: { es: "Core Framework + Crocoblock", en: "Core Framework + Crocoblock" },
+    prioritySupport: { es: "Soporte prioritario 24/7", en: "24/7 priority support" },
+    // Additional services
+    sslCertificates: { es: "Certificados SSL", en: "SSL Certificates" },
+    sslDesc: { es: "Distintos niveles de certificados según tus necesidades de seguridad.", en: "Different certificate levels based on your security needs." },
+    domains: { es: "Dominios", en: "Domains" },
+    domainsDesc: { es: "Amplia gama de extensiones disponibles. Registro y renovación anual.", en: "Wide range of extensions available. Annual registration and renewal." },
+    vps: { es: "VPS", en: "VPS" },
+    vpsDesc: { es: "Servidores privados virtuales con configuración personalizada según tu proyecto.", en: "Virtual private servers with custom configuration for your project." },
+  },
+
+  // Contact Page
+  contact: {
+    heroTag: { es: "Contacto", en: "Contact" },
+    heroTitle1: { es: "Hablemos de tu", en: "Let's talk about your" },
+    heroTitle2: { es: "próximo proyecto", en: "next project" },
+    heroDescription: { 
+      es: "¿Tenés una idea en mente? Contanos cómo podemos ayudarte a transformar tu negocio con tecnología.", 
+      en: "Have an idea in mind? Tell us how we can help transform your business with technology." 
+    },
+    emailTitle: { es: "Email", en: "Email" },
+    emailDesc: { es: "Te respondemos en menos de 24hs", en: "We respond within 24 hours" },
+    whatsappTitle: { es: "WhatsApp", en: "WhatsApp" },
+    whatsappDesc: { es: "Lunes a Viernes, 9:00 - 18:00", en: "Monday to Friday, 9:00 AM - 6:00 PM" },
+    locationTitle: { es: "Ubicación", en: "Location" },
+    locationValue: { es: "Buenos Aires, Argentina", en: "Buenos Aires, Argentina" },
+    locationDesc: { es: "Operamos de forma remota en LATAM, USA y Europa", en: "We operate remotely in LATAM, USA and Europe" },
+    whyChooseUs: { es: "¿Por qué elegirnos?", en: "Why choose us?" },
+    techPartner: { es: "Somos tu socio tecnológico", en: "We are your tech partner" },
+    partnerDesc: { 
+      es: "En LS NET HUB combinamos experiencia técnica con una visión práctica de los negocios. No vendemos humo: entregamos soluciones que funcionan.", 
+      en: "At LS NET HUB we combine technical expertise with a practical business vision. We don't sell hype: we deliver solutions that work." 
+    },
+    fastResponse: { es: "Respuesta rápida", en: "Fast response" },
+    fastResponseDesc: { es: "Te respondemos en menos de 24 horas hábiles.", en: "We respond within 24 business hours." },
+    freeConsult: { es: "Consulta sin compromiso", en: "Free consultation" },
+    freeConsultDesc: { 
+      es: "La primera llamada es gratis. Evaluamos tu caso y te damos un presupuesto claro.", 
+      en: "The first call is free. We evaluate your case and give you a clear quote." 
+    },
+    yourName: { es: "Tu Nombre", en: "Your Name" },
+    yourEmail: { es: "Email", en: "Email" },
+    yourCompany: { es: "Empresa", en: "Company" },
+    subjectPlaceholder: { es: "¿En qué podemos ayudarte?", en: "How can we help you?" },
+    messagePlaceholder: { es: "Contanos sobre tu proyecto o consulta...", en: "Tell us about your project or inquiry..." },
+    privacyNotice: { 
+      es: "Al enviar este formulario, aceptás nuestra", 
+      en: "By submitting this form, you accept our" 
+    },
+    messageSent: { es: "¡Mensaje enviado!", en: "Message sent!" },
+    messageSentDesc: { es: "Nos pondremos en contacto contigo pronto.", en: "We will contact you soon." },
+  },
+
+  // About Page
+  about: {
+    heroTag: { es: "Quiénes Somos", en: "About Us" },
+    heroTitle1: { es: "Tecnología aplicada", en: "Applied technology" },
+    heroTitle2: { es: "para hacer crecer tu negocio.", en: "to grow your business." },
+    heroDescription: { 
+      es: "Somos un ecosistema integrado de educación, automatización, infraestructura cloud y consultoría digital con más de 20 años de experiencia.", 
+      en: "We are an integrated ecosystem of education, automation, cloud infrastructure and digital consulting with over 20 years of experience." 
+    },
+    yearsExperience: { es: "Años de experiencia", en: "Years of experience" },
+    activeClients: { es: "Clientes activos", en: "Active clients" },
+    uptimeGuaranteed: { es: "Uptime garantizado", en: "Uptime guaranteed" },
+    techSupport: { es: "Soporte técnico", en: "Technical support" },
+    ourMission: { es: "Nuestra Misión", en: "Our Mission" },
+    democratize: { es: "Democratizar el acceso a la tecnología", en: "Democratize access to technology" },
+    missionDesc1: { 
+      es: "Democratizar el acceso a herramientas tecnológicas profesionales y conocimiento especializado, permitiendo que empresas de cualquier tamaño automaticen, crezcan y compitan a nivel internacional.", 
+      en: "Democratize access to professional technology tools and specialized knowledge, enabling businesses of any size to automate, grow, and compete internationally." 
+    },
+    missionDesc2: { 
+      es: "No vendemos \"espacio en disco\" ni servicios aislados. Ofrecemos soluciones llave en mano pensadas para optimizar operaciones, reducir costos y acelerar crecimiento.", 
+      en: "We don't sell \"disk space\" or isolated services. We offer turnkey solutions designed to optimize operations, reduce costs and accelerate growth." 
+    },
+    valueProposition: { es: "Propuesta de Valor", en: "Value Proposition" },
+    whyChooseUs: { es: "¿Por qué elegirnos?", en: "Why choose us?" },
+    integratedEcosystem: { es: "Ecosistema Integrado", en: "Integrated Ecosystem" },
+    integratedDesc: { 
+      es: "Combinamos hosting, automatización, formación y soporte bajo una arquitectura única. Accedés a múltiples servicios desde una sola relación comercial.", 
+      en: "We combine hosting, automation, training and support under a single architecture. Access multiple services from a single business relationship." 
+    },
+    advancedAutomation: { es: "Automatización Avanzada", en: "Advanced Automation" },
+    automationDesc: { 
+      es: "Implementamos flujos de trabajo con n8n e inteligencia artificial. Reducimos tareas repetitivas entre 40-80% del tiempo operativo.", 
+      en: "We implement workflows with n8n and artificial intelligence. We reduce repetitive tasks by 40-80% of operational time." 
+    },
+    ownAcademy: { es: "Academia Propia", en: "Own Academy" },
+    academyDesc: { 
+      es: "Cursos especializados en automatización, hosting, marketing digital y desarrollo web. Certificaciones que generan valor para tu equipo.", 
+      en: "Specialized courses in automation, hosting, digital marketing and web development. Certifications that add value to your team." 
+    },
+    specializedSupport: { es: "Soporte Especializado", en: "Specialized Support" },
+    supportDesc: { 
+      es: "Equipo técnico enfocado, no tercerizado. Disponibilidad 24/7 para infraestructura crítica. Respuesta en máximo 4 horas para incidentes.", 
+      en: "Focused technical team, not outsourced. 24/7 availability for critical infrastructure. Response within 4 hours for incidents." 
+    },
+    testimonials: { es: "Testimonios", en: "Testimonials" },
+    whatClientsSay: { es: "Lo que dicen nuestros clientes", en: "What our clients say" },
+    testimonial1: { 
+      es: "Trabajo con LsNet informática desde hace más de 13 años. Se ocupan de todo: solo llamo y comento las necesidades y en unas horas ya estamos trabajando con la infraestructura que necesitamos.", 
+      en: "I've been working with LsNet for over 13 years. They take care of everything: I just call, mention our needs, and within hours we're working with the infrastructure we need." 
+    },
+    testimonial1Author: { es: "Cliente Corporativo", en: "Corporate Client" },
+    testimonial1Role: { es: "13+ años de relación", en: "13+ years relationship" },
+    testimonial2: { 
+      es: "Conocí LsNet informática por un conocido que tiene una Pyme. Trabajan muy responsablemente y solucionan problemas de software, hardware e infraestructura. Los recomiendo sin ninguna duda.", 
+      en: "I learned about LsNet from an acquaintance who has an SME. They work very responsibly and solve software, hardware and infrastructure problems. I recommend them without hesitation." 
+    },
+    testimonial2Author: { es: "Dueño de Pyme", en: "SME Owner" },
+    testimonial2Role: { es: "Recomendación directa", en: "Direct recommendation" },
+    testimonial3: { 
+      es: "Me salió un negocio de importación y necesitaba resolver rápidamente el tema con mi página de ventas. En menos de dos horas ya estaba enviando emails con mi propio dominio.", 
+      en: "I got into an import business and needed to quickly resolve my sales page issue. In less than two hours I was already sending emails with my own domain." 
+    },
+    testimonial3Author: { es: "Importador", en: "Importer" },
+    testimonial3Role: { es: "Solución express", en: "Express solution" },
+    internationalPresence: { es: "Presencia Internacional", en: "International Presence" },
+    presenceDesc: { es: "Operamos de forma remota atendiendo clientes en toda América y Europa.", en: "We operate remotely serving clients throughout America and Europe." },
+    transformBusiness: { es: "¿Listo para transformar tu negocio?", en: "Ready to transform your business?" },
+    ctaDesc: { 
+      es: "Contactanos hoy y descubrí cómo podemos ayudarte a automatizar, crecer y competir a nivel internacional.", 
+      en: "Contact us today and discover how we can help you automate, grow and compete internationally." 
+    },
+    tryAura: { es: "Probá AURA", en: "Try AURA" },
+  },
+
+  // Hosting Consult Form
+  consultForm: {
+    title: { es: "Solicitar Asesoramiento", en: "Request Consultation" },
+    consultFor: { es: "Consulta:", en: "Inquiry:" },
+    description: { 
+      es: "Completá el formulario y un asesor se comunicará con vos para ofrecerte la mejor opción.", 
+      en: "Fill out the form and an advisor will contact you to offer you the best option." 
+    },
+    contactData: { es: "Datos de contacto", en: "Contact information" },
+    fullName: { es: "Nombre completo", en: "Full name" },
+    phoneWhatsApp: { es: "Teléfono / WhatsApp", en: "Phone / WhatsApp" },
+    projectType: { es: "Tipo de proyecto", en: "Project type" },
+    websiteLanding: { es: "Sitio web / Landing page", en: "Website / Landing page" },
+    ecommerce: { es: "Tienda online / E-commerce", en: "Online store / E-commerce" },
+    blogNews: { es: "Blog / Portal de noticias", en: "Blog / News portal" },
+    webapp: { es: "Aplicación web", en: "Web application" },
+    other: { es: "Otro", en: "Other" },
+    howManySites: { es: "¿Cuántos sitios web necesitás alojar?", en: "How many websites do you need to host?" },
+    currentHosting: { es: "¿Tenés hosting actualmente?", en: "Do you currently have hosting?" },
+    currentHostingPlaceholder: { es: "Ej: GoDaddy, HostGator, otro proveedor...", en: "E.g., GoDaddy, HostGator, other provider..." },
+    migrationNote: { es: "Si ya tenés hosting, podemos ayudarte con la migración sin costo adicional.", en: "If you already have hosting, we can help you migrate at no extra cost." },
+    featuresNeeded: { es: "¿Qué funcionalidades necesitás?", en: "What features do you need?" },
+    wordpress: { es: "WordPress", en: "WordPress" },
+    sslCertificate: { es: "Certificado SSL", en: "SSL Certificate" },
+    corporateEmails: { es: "Emails corporativos", en: "Corporate emails" },
+    customDomain: { es: "Dominio personalizado", en: "Custom domain" },
+    autoBackups: { es: "Backups automáticos", en: "Automatic backups" },
+    prioritySupport: { es: "Soporte prioritario", en: "Priority support" },
+    anythingElse: { es: "¿Algo más que debamos saber?", en: "Anything else we should know?" },
+    additionalPlaceholder: { es: "Contanos sobre tu proyecto, requerimientos especiales, fechas límite...", en: "Tell us about your project, special requirements, deadlines..." },
+    preferredContact: { es: "¿Cómo preferís que te contactemos?", en: "How do you prefer to be contacted?" },
+    whatsappFast: { es: "WhatsApp (respuesta rápida)", en: "WhatsApp (fast response)" },
+    sendViaWhatsApp: { es: "Enviar por WhatsApp", en: "Send via WhatsApp" },
+    sendViaEmail: { es: "Enviar por Email", en: "Send via Email" },
+    redirectingWhatsApp: { es: "¡Redirigiendo a WhatsApp!", en: "Redirecting to WhatsApp!" },
+    whatsappConversation: { es: "Se abrirá una conversación con nuestro equipo.", en: "A conversation with our team will open." },
+    openingEmail: { es: "¡Abriendo cliente de email!", en: "Opening email client!" },
+    emailPreloaded: { es: "Se abrirá tu aplicación de correo con los datos precargados.", en: "Your email app will open with the data preloaded." },
+  },
+
+  // Theme
+  theme: {
+    light: { es: "Claro", en: "Light" },
+    dark: { es: "Oscuro", en: "Dark" },
+    system: { es: "Sistema", en: "System" },
+  },
+} as const;
+
+export type TranslationKey = keyof typeof translations;

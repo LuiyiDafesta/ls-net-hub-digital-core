@@ -10,7 +10,75 @@
 
 @layer base {
   :root {
-    /* LS NET HUB Design System - Dark Mode First */
+    /* LS NET HUB Design System - Light Mode */
+    --background: 0 0% 98%; /* #FAFAFA Light grey */
+    --foreground: 0 0% 9%; /* #171717 Near black */
+
+    --card: 0 0% 100%; /* Pure white */
+    --card-foreground: 0 0% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+
+    /* Core Red - The Heart */
+    --primary: 0 100% 45%; /* Darker red for light mode */
+    --primary-foreground: 0 0% 100%;
+
+    /* Neon Blue - Infrastructure */
+    --secondary: 211 100% 40%; /* Darker blue for light mode */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Tech Grey */
+    --muted: 240 5% 92%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 211 100% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Signal Green */
+    --success: 134 61% 35%;
+    --success-foreground: 0 0% 100%;
+
+    /* Data Yellow */
+    --warning: 45 100% 45%;
+    --warning-foreground: 0 0% 0%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 5% 84%;
+    --input: 240 5% 84%;
+    --ring: 211 100% 45%;
+
+    --radius: 0.75rem;
+
+    /* LS Flow Gradient */
+    --gradient-ls-flow: linear-gradient(90deg, 
+      hsl(211, 100%, 45%) 0%, 
+      hsl(0, 100%, 50%) 33%, 
+      hsl(45, 100%, 45%) 66%, 
+      hsl(134, 61%, 35%) 100%
+    );
+
+    /* Glow Effects - Softer for light mode */
+    --glow-blue: 0 0 15px hsla(211, 100%, 50%, 0.25);
+    --glow-red: 0 0 15px hsla(0, 100%, 50%, 0.25);
+    --glow-green: 0 0 15px hsla(134, 61%, 41%, 0.25);
+    --glow-yellow: 0 0 15px hsla(45, 100%, 51%, 0.25);
+    --glow-gradient: 0 0 20px hsla(211, 100%, 50%, 0.15), 0 0 40px hsla(0, 100%, 50%, 0.1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 211 100% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 92%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 240 5% 84%;
+    --sidebar-ring: 211 100% 45%;
+  }
+
+  .dark {
+    /* LS NET HUB Design System - Dark Mode */
     --background: 0 0% 4%; /* #0A0A0A Void Black */
     --foreground: 0 0% 100%; /* #FFFFFF Pure White */
 
@@ -50,8 +118,6 @@
     --input: 240 4% 16%;
     --ring: 211 100% 50%;
 
-    --radius: 0.75rem;
-
     /* LS Flow Gradient */
     --gradient-ls-flow: linear-gradient(90deg, 
       hsl(211, 100%, 50%) 0%, 
@@ -75,10 +141,6 @@
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 240 4% 16%;
     --sidebar-ring: 211 100% 50%;
-  }
-
-  .dark {
-    /* Same as root - dark mode is default */
   }
 }
 
