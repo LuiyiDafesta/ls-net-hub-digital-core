@@ -72,7 +72,7 @@ const ThreePillars = () => {
           {pillars.map((pillar, index) => (
             <div
               key={pillar.title}
-              className={`group relative p-10 rounded-2xl bg-card/80 backdrop-blur-sm border border-border ${borderColorClasses[pillar.color]} transition-all duration-500 hover:translate-y-[-8px]`}
+              className={`group relative p-10 rounded-2xl bg-card/80 backdrop-blur-sm border border-border ${borderColorClasses[pillar.color]} transition-all duration-500 hover:translate-y-[-8px] flex flex-col h-full min-h-[320px]`}
               style={{
                 animationDelay: `${index * 150}ms`,
               }}
@@ -94,7 +94,7 @@ const ThreePillars = () => {
               <h3 className={`text-2xl font-bold text-foreground mb-4 ${colorClasses[pillar.color]} group-hover:text-current transition-colors`}>
                 {pillar.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-8 text-base">
+              <p className="text-muted-foreground leading-relaxed mb-8 text-base flex-grow">
                 {pillar.description}
               </p>
 
